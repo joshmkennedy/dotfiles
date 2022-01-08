@@ -1,0 +1,5 @@
+plugged/**/*
+autoload/**/*
+ftdetect/**/*
+ftplugin/**/*
+UltiSnips/**/*

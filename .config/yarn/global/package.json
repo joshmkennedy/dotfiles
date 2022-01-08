@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "@sanity/cli": "^1.149.9",
+    "@zeit/ncc": "zeit/ncc",
+    "create-electron-app": "^1.0.0",
+    "create-next-app": "^9.2.1",
+    "create-react-app": "^4.0.3",
+    "create-redwood-app": "^0.19.1",
+    "cwebp": "^2.0.3",
+    "eslint": "^5.12.1",
+    "expo-cli": "^3.13.1",
+    "gatsby-cli": "^2.7.15",
+    "gatsby-dev-cli": "^2.12.0",
+    "generator-code": "^1.2.22",
+    "grunt-cli": "^1.4.2",
+    "nexe": "^4.0.0-beta.18",
+    "now": "^12.1.14",
+    "parcel": "^2.0.0-beta.1",
+    "parcel-bundler": "^1.12.3",
+    "prisma": "^1.21.1",
+    "react-router": "^4.3.1",
+    "react-spring": "^6.1.4",
+    "react-with-gesture": "^1.0.10",
+    "serve": "^11.2.0",
+    "styled-components": "^4.0.2",
+    "surge": "^0.20.1",
+    "vue-cli": "^2.9.6",
+    "yo": "^3.1.1"
+  }
+}

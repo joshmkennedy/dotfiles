@@ -1,0 +1,13 @@
+{
+  "extension": {
+    "coc-pairs": {
+      "disabled": true
+    },
+    "coc-phpls": {
+      "disabled": true
+    },
+    "coc-git": {
+      "disabled": false
+    }
+  }
+}

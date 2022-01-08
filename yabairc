@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+yabai -m config window_border                off
+yabai -m config window_shadow                off
