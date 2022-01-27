@@ -159,7 +159,22 @@ local types = require("luasnip.util.types")
 ls.snippets = {
 	all = require'snippets.general'.load(),
 	javascript = require'snippets.javascript'.load(),
-	typescript = require'snippets.javascript'.load()
+	typescript = require'snippets.javascript'.load(),
+	svelte = {
+		s("sc",{ 
+				t({
+					"<script>",
+					"",
+					"</script>",
+					"",
+					"<h1></h1>",
+					"",
+					"<style>",
+					"",
+					"</style>"
+				})
+		})
+	}
 }
 -- autotriggered snippets have to be defined in a separate table, luasnip.autosnippets.
 ls.autosnippets = {

@@ -6,7 +6,10 @@ require("nvim-treesitter.configs").setup {
         disable = {"css","scss"},
     }, 
     incremental_selection = { enable = true }, 
-    textobjects = { enable = true }
+    textobjects = {
+        enable = true, 
+    },
+-- indentation = {enable = true}
 }
 
 
@@ -45,11 +48,14 @@ local on_attach = function(client, bufnr)
     vim.cmd("command! LspImplementation lua vim.lsp.buf.implementation()")
     vim.cmd("command! LspDiagPrev lua vim.lsp.diagnostic.goto_prev()")
     vim.cmd("command! LspDiagNext lua vim.lsp.diagnostic.goto_next()")
+    vim.cmd("command! LspLocationList lua vim.diagnostic.setloclist()")
     vim.cmd(
-        "command! LspDiagLine lua vim.lsp.diagnostic.show_line_diagnostics()")
+        "command! LspDiagLine lua vim.diagnostic.open_float()")
     vim.cmd("command! LspSignatureHelp lua vim.lsp.buf.signature_help()")
 		buf_map(bufnr, "n", "gd", ":LspDef<CR>", {silent = true})
     buf_map(bufnr, "n", "gr", ":LspRename<CR>", {silent = true})
+
+    -- This finds all references of var or func and stores them in quickfixlist
     buf_map(bufnr, "n", "gR", ":LspRefs<CR>", {silent = true})
     buf_map(bufnr, "n", "gy", ":LspTypeDef<CR>", {silent = true})
     buf_map(bufnr, "n", "K", ":LspHover<CR>", {silent = true})
@@ -68,14 +74,16 @@ if client.resolved_capabilities.document_formatting then
   end
 end
 	
+-- TYPSCRIPT
 nvim_lsp.tsserver.setup {
-		filetypes = {'typescript','javascript','typescriptreact', 'typescriptreact'},
+		filetypes = {'typescript','javascript','javascriptreact', 'typescriptreact'},
     on_attach = function(client)
         client.resolved_capabilities.document_formatting = false
         on_attach(client)
     end
 }
 
+-- GO
 nvim_lsp.gopls.setup {
 
 	cmd = {'gopls'},
@@ -94,19 +102,104 @@ nvim_lsp.gopls.setup {
 	},
 	on_attach = on_attach 
 }
--- nvim_lsp.denols.setup{}
-nvim_lsp.intelephense.setup{}
 
---CSS
+-- nvim_lsp.denols.setup{}
+
+-- PHP
+nvim_lsp.intelephense.setup{
+    settings = {
+        intelephense = {
+            stubs = { "bcmath",
+                "bz2",
+                "calendar",
+                "Core",
+                "curl",
+                "date",
+                "dba",
+                "dom",
+                "enchant",
+                "fileinfo",
+                "filter",
+                "ftp",
+                "gd",
+                "gettext",
+                "hash",
+                "iconv",
+                "imap",
+                "intl",
+                "json",
+                "ldap",
+                "libxml",
+                "mbstring",
+                "mcrypt",
+                "mysql",
+                "mysqli",
+                "password",
+                "pcntl",
+                "pcre",
+                "PDO",
+                "pdo_mysql",
+                "Phar",
+                "readline",
+                "recode",
+                "Reflection",
+                "regex",
+                "session",
+                "SimpleXML",
+                "soap",
+                "sockets",
+                "sodium",
+                "SPL",
+                "standard",
+                "superglobals",
+                "sysvsem",
+                "sysvshm",
+                "tokenizer",
+                "xml",
+                "xdebug",
+                "xmlreader",
+                "xmlwriter",
+                "yaml",
+                "zip",
+                "zlib",
+                "wordpress",
+                "woocommerce",
+                "acf-pro",
+                "wordpress-globals",
+                "wp-cli",
+                "genesis",
+                "polylang"            },
+            files = {
+                maxSize = 5000000;
+            };
+        };
+    }
+}
+
+--nvim_lsp.phpactor.setup{}
+
+
+-- CSS
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 nvim_lsp.cssls.setup{
-  capabilities = capabilities,
+    capabilities = capabilities,
+    on_attach = on_attach
 }
 
+nvim_lsp.svelte.setup{}
+
+-- RUST
+local function config(_config)
+	return vim.tbl_deep_extend("force", {
+		capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+	}, _config or {})
+end 
+nvim_lsp.rust_analyzer.setup(config())
+-- DIAGNOSTICLS
 nvim_lsp.diagnosticls.setup {
 	on_attach = on_attach,
-	filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss', 'markdown', 'pandoc' },
+	filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact','svelte', 'css', 'less', 'scss', 'markdown', 'pandoc' },
 	init_options = {
 		linters = {
 			eslint = {
@@ -158,9 +251,15 @@ nvim_lsp.diagnosticls.setup {
 			typescriptreact = 'prettier',
 			json = 'prettier',
 			markdown = 'prettier',
+      svelte = 'prettier'
 		}
 	}
 }
+
+
+
+-- require('rust-tools').setup(opts)
+-- cmd = { "rustup", "run", "nightly", "rust-analyzer"},
 
 -- cmp stuff
 -- Setup nvim-cmp.

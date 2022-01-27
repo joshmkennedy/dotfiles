@@ -1,4 +1,3 @@
-
     set autoread " detect when a file is changed
 
     " WARNING: These settings disable vim's backups (swap files).
@@ -14,8 +13,7 @@
 
 	set history=1000 "store the last 1000 command-lines entered
 
-set termguicolors     
-    set textwidth=120
+    set termguicolors     
 
     if (has('nvim'))
         " show results of substition as they're happening
@@ -78,7 +76,9 @@ set termguicolors
     set shiftwidth=2 " number of spaces to use for indent and unindent
     set shiftround " round indent to a multiple of 'shiftwidth'
 
+    set textwidth=120
 		set colorcolumn=100
+    "set co=120
 
 		set wildignore+=node_modules/**
 		set wildignore+=.git/**

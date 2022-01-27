@@ -12,10 +12,12 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-ui-select.nvim'
 
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
+
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -60,8 +62,8 @@ source ~/.config/nvim/parts/maps.vim
 
 source ~/.config/nvim/parts/sets.vim
 
-source ~/sites/joshs/vim-forever/vim-plugin/plugin/vim-forever.vim
-set runtimepath^=~/sites/joshs/vim-forever/vim-plugin
+"source ~/sites/joshs/vim-forever/vim-plugin/plugin/vim-forever.vim
+"set runtimepath^=~/sites/joshs/vim-forever/vim-plugin
 
 " Luasnip
 imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
@@ -75,7 +77,7 @@ smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' 
 
 " emit
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,scss,jsx EmmetInstall
+autocmd FileType html,css,scss,jsx,svelte EmmetInstall
 let g:user_emmet_settings = {
   \  'svelte' : {
   \    'extends' : 'html',
@@ -94,11 +96,14 @@ let g:user_emmet_settings = {
   \  },
   \}
 
-augroup highlight_yank
+augroup highlight_yank 
     autocmd!
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
 augroup END
 
+" suggest plugin
+
+
 " copilot
-imap <silent><script><expr> <C-Y> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
+map <silent><script><expr> <C-I> copilot#Accept("\<CR>")
