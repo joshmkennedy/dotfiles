@@ -7,4 +7,4 @@ node_modules/**
 
 .config/nvim/plugin/nvim-whid
 
-
+.config/github-copilot/**
