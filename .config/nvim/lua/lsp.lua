@@ -1,17 +1,16 @@
 local nvim_lsp = require("lspconfig")
-
-require("nvim-treesitter.configs").setup {  
-    highlight = { 
+require("nvim-treesitter.configs").setup {  -- 
+    highlight = {
          enable = true,
-        disable = {"css","scss"},
-    }, 
-    incremental_selection = { enable = true }, 
-    textobjects = {
-        enable = true, 
+        disable = {"css","scss", "svelte", "html","php" },
     },
--- indentation = {enable = true}
+    incremental_selection = { enable = true },
+    textobjects = { enable = true, },
+    indentation = {
+        enable = true,
+        disable = {"php"}
+    }
 }
-
 
 local format_async = function(err, _, result, _, bufnr)
     if err ~= nil or result == nil then return end
@@ -49,23 +48,23 @@ local on_attach = function(client, bufnr)
     vim.cmd("command! LspDiagPrev lua vim.lsp.diagnostic.goto_prev()")
     vim.cmd("command! LspDiagNext lua vim.lsp.diagnostic.goto_next()")
     vim.cmd("command! LspLocationList lua vim.diagnostic.setloclist()")
-    vim.cmd(
-        "command! LspDiagLine lua vim.diagnostic.open_float()")
+    vim.cmd( "command! LspDiagLine lua vim.diagnostic.open_float()")
     vim.cmd("command! LspSignatureHelp lua vim.lsp.buf.signature_help()")
-		buf_map(bufnr, "n", "gd", ":LspDef<CR>", {silent = true})
-    buf_map(bufnr, "n", "gr", ":LspRename<CR>", {silent = true})
+
+		vim.keymap.set("n", "gd", ":LspDef<CR>", {silent = true})
+    vim.keymap.set("n", "gr", ":LspRename<CR>", {silent = true})
 
     -- This finds all references of var or func and stores them in quickfixlist
-    buf_map(bufnr, "n", "gR", ":LspRefs<CR>", {silent = true})
-    buf_map(bufnr, "n", "gy", ":LspTypeDef<CR>", {silent = true})
-    buf_map(bufnr, "n", "K", ":LspHover<CR>", {silent = true})
-    buf_map(bufnr, "n", "gs", ":LspOrganize<CR>", {silent = true})
-    buf_map(bufnr, "n", "[a", ":LspDiagPrev<CR>", {silent = true})
-    buf_map(bufnr, "n", "]a", ":LspDiagNext<CR>", {silent = true})
-    buf_map(bufnr, "n", "ga", ":LspCodeAction<CR>", {silent = true})
-    buf_map(bufnr, "n", "<Leader>a", ":LspDiagLine<CR>", {silent = true})
-    buf_map(bufnr, "i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>",
-              {silent = true})
+    vim.keymap.set( "n", "gR", ":LspRefs<CR>", {silent = true})
+    vim.keymap.set( "n", "gy", ":LspTypeDef<CR>", {silent = true})
+    vim.keymap.set( "n", "K", ":LspHover<CR>", {silent = true})
+    vim.keymap.set( "n", "gs", ":LspOrganize<CR>", {silent = true})
+    vim.keymap.set( "n", "[a", ":LspDiagPrev<CR>", {silent = true})
+    vim.keymap.set( "n", "]a", ":LspDiagNext<CR>", {silent = true})
+    vim.keymap.set( "n", "ga", ":LspCodeAction<CR>", {silent = true})
+    vim.keymap.set( "n", "<Leader>a", ":LspDiagLine<CR>", {silent = true})
+    vim.keymap.set( "i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>", {silent = true})
+
 if client.resolved_capabilities.document_formatting then
     vim.api.nvim_command [[augroup Format]]
     vim.api.nvim_command [[autocmd! * <buffer>]]
@@ -76,7 +75,7 @@ end
 	
 -- TYPSCRIPT
 nvim_lsp.tsserver.setup {
-		filetypes = {'typescript','javascript','javascriptreact', 'typescriptreact'},
+		filetypes = {'typescript','javascript','javascriptreact', 'typescriptreact',},
     on_attach = function(client)
         client.resolved_capabilities.document_formatting = false
         on_attach(client)
@@ -85,7 +84,6 @@ nvim_lsp.tsserver.setup {
 
 -- GO
 nvim_lsp.gopls.setup {
-
 	cmd = {'gopls'},
 	capabilities = vim.lsp.protocol.make_client_capabilities(),
 	settings = {
@@ -165,13 +163,16 @@ nvim_lsp.intelephense.setup{
                 "wordpress",
                 "woocommerce",
                 "acf-pro",
+                "acf-stubs",
                 "wordpress-globals",
                 "wp-cli",
                 "genesis",
-                "polylang"            },
+                "polylang",
+                "sbi"},
             files = {
                 maxSize = 5000000;
             };
+            
         };
     }
 }
@@ -243,11 +244,11 @@ nvim_lsp.diagnosticls.setup {
 		formatFiletypes = {
 			css = 'prettier',
 			javascript = 'prettier',
-			javascriptreact = 'eslint_d',
+			javascriptreact = 'prettier',
 			json = 'prettier',
 			scss = 'prettier',
 			less = 'prettier',
-			typescript = 'eslint_d',
+			typescript = 'prettier',
 			typescriptreact = 'prettier',
 			json = 'prettier',
 			markdown = 'prettier',
@@ -258,13 +259,12 @@ nvim_lsp.diagnosticls.setup {
 
 
 
--- require('rust-tools').setup(opts)
--- cmd = { "rustup", "run", "nightly", "rust-analyzer"},
 
--- cmp stuff
--- Setup nvim-cmp.
 local cmp = require"cmp"
-
+-- cmp stuff
+local lspkind = require"lspkind"
+lspkind.init()
+-- Setup nvim-cmp.
 cmp.setup({
 
     snippet = {
@@ -273,16 +273,71 @@ cmp.setup({
         require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
       end,
     },
-    mapping = {
-        ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-d>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<C-e>"] = cmp.mapping.close(),
-	},
+   --  mapping = {
+   --      ["<C-p>"] = cmp.mapping.select_prev_item(),
+   --      ["<C-n>"] = cmp.mapping.select_next_item(),
+   --      ["<C-c>"] = cmp.mapping.close(),
+	  --
+   --      ["<c-y>"] = cmp.mapping.confirm {
+   --              behavior= cmp.ConfirmBehavior.Insert,
+   --              select=true,
+   --              
+   --      },
+   --      ["<c-space>"] = cmp.mapping.complete(),
+	  --
+	  -- },
     sources = {
+      -- { name = 'css_vars', priority = 100, },
       { name = 'nvim_lsp' },
       { name = 'luasnip' }, -- For luasnip users.
+      { name = 'path' },
       { name = 'buffer' },
-    }
+    },
+
+    formatting = {
+        format = lspkind.cmp_format {
+            with_text = true,
+            menu = {
+                buffer = "[BUF]",
+                nvim_lsp = "[LSP]",
+                path = "[PATH]",
+                luasnip = "[SNIP]",
+                cmdline = "[CMD]",
+                css_vars = "[CSS]",
+            },
+        },
+    },
+    experimental = {
+        -- ghost_text = true,
+       native_menu=false, 
+    },
     
+  })
+
+  cmp.setup.cmdline('/', {
+
+    sources = {
+      { name = 'buffer' }
+    }
   }) 
+
+  cmp.setup.cmdline(':', {
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+
+      { name = 'cmdline' }
+    
+    }),
+
+  })
+
+
+vim.keymap.set({'i','c'}, '<C-n>', function()
+    cmp.select_next_item()
+end)
+vim.keymap.set({'i','c'}, '<C-p>', function()
+    cmp.select_prev_item()
+end)
+
+

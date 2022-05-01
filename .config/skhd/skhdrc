@@ -1,8 +1,16 @@
 
-alt - 1 : yabai -m space --focus 1 
-alt - 2 : yabai -m space --focus 2
-alt - 3 : yabai -m space --focus 3 
-alt - 4 : yabai -m space --focus 4
-alt - 5 : yabai -m space --focus 5
-alt - 6 : yabai -m space --focus 6
+# alt - 1 : yabai -m space --focus 1
+# alt - 2 : yabai -m space --focus 2
+# alt - 3 : yabai -m space --focus 3
+# alt - 4 : yabai -m space --focus 4
+# alt - 5 : yabai -m space --focus 5
+# alt - 6 : yabai -m space --focus 6
 
+# alt - p : overlay --toggle
+alt - 6 : open /Applications/Asana.app
+alt - 7 : open /Applications/Figma.app
+alt - 3 : open /Applications/Google\ Chrome.app
+alt - 2 : open /Applications/MacPorts/kitty.app
+alt - 5 : open /Applications/slack.app
+alt - 4 : open /Applications/Notion.app
+alt - 1 : open /Applications/Spotify.app

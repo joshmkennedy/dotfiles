@@ -1,4 +1,3 @@
-
 local ls = require("luasnip")
 local s = ls.snippet
 local sn = ls.snippet_node
@@ -14,48 +13,41 @@ local m = require("luasnip.extras").match
 local n = require("luasnip.extras").nonempty
 local dl = require("luasnip.extras").dynamic_lambda
 local types = require("luasnip.util.types")
+local isn = ls.indent_snippet_node
 
-local parse_snippet = ls.parser.parse_snippet
 local function load()
 
 	return {  
-		parse_snippet("divider",
-			"/** ------- ${1:Label} ------- **/"
-		),
-
-		s({
-				trig ="docfn",
-				dscr = "document args"
-			},
-			{
-				t({"function "}),
+		s("func",{
+				t("function "),			
 				i(1),
 				t("( "),
-				t(" ){","}")
+				i(2),
+				t({" ) {",""}),
+				i(3),
+				t({"","}"}),
 			}),
-s("trig", {
-    	i(1, "text_of_first"),
-    	i(2, {"first_line_of_second", "second_line_of_second"}),
-    	-- order is 2,1, not 1,2!!
-    	f(function(args, snip)
-    		--here
-				return t("arg1 " .. args[1] .. "arg2 " .. args[2])
-    	end, {2, 1} )}),
 
-				ls.parser.parse_snippet("fu", "function $1 ( $2 ) { $0 }"),
+		s("if",{
+				t({"if ( "}),
+				i(1),
+				t({" ) {"}),
+				i(0),
+				t({"}"}),
+			}),
 
+		ls.parser.parse_snippet("fu", "function $1 ( $2 ) { $0 }"),
+		ls.parser.parse_snippet("wpaction", "add_action('$1', '$2', $3, $4);\nfunction $6 ($5){}"),
+		ls.parser.parse_snippet("wpfilter", "add_filter('$1', '$2', $3, $4);\nfunction $6 ($5){}"),
+		ls.parser.parse_snippet("if", "if ( $1 ) {\n $0 \n}"),
 	}
 
 end
-
-return {
+ return {
 	load = load
 }
 
 
 
-
-
-
-
+	
 

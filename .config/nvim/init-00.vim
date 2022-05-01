@@ -7,6 +7,7 @@ abbr cosnt const
 abbr attribtue attribute
 abbr attribuet attribute
 
+
 let mapleader = " " 
 " SETS
 

@@ -8077,13 +8077,13 @@ create-redwood-app@^0.19.1:
     tmp "^0.2.1"
     yargs "^16.0.3"
 
-create-vite@^2.7.2:
-  version "2.7.2"
-  resolved "https://registry.yarnpkg.com/create-vite/-/create-vite-2.7.2.tgz#f77a759cae3f125f676b8e3ad52fe4bdccab5101"
-  integrity sha512-4Eint1oL6GcZWGkgLbSmbzY1UNTkqQyjD9T4aM1YQsltKQ5ZNWDy+rvgYRPV9dR0XD6eLPs8TUUoge1xQCd4BA==
+create-vite@^2.9.2:
+  version "2.9.2"
+  resolved "https://registry.yarnpkg.com/create-vite/-/create-vite-2.9.2.tgz#b7f6e344b5271de2a2785cb1fb7020efacf12250"
+  integrity sha512-50UqOLnArYcU2W8Avgk8ibUPDAs8vm255GjqPHj3+7/gs70FknajKqf1t9kWkeXpiVtlTcMMyppPG04tPkNcbA==
   dependencies:
-    kolorist "^1.5.0"
-    minimist "^1.2.5"
+    kolorist "^1.5.1"
+    minimist "^1.2.6"
     prompts "^2.4.2"
 
 cross-fetch@2.2.2:
@@ -14868,7 +14868,7 @@ kleur@^3.0.3:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
-kolorist@^1.5.0:
+kolorist@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/kolorist/-/kolorist-1.5.1.tgz#c3d66dc4fabde4f6b7faa6efda84c00491f9e52b"
   integrity sha512-lxpCM3HTvquGxKGzHeknB/sUjuVoUElLlfYnXZT73K8geR9jQbroGlSCFBax9/0mpGoD3kzcMLnOlGQPJJNyqQ==
@@ -16247,6 +16247,11 @@ minimist@^1.1.1, minimist@^1.1.3:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
   integrity sha1-o1AIsg9BOD7sH7kU9M1d95omQoQ=
+
+minimist@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
+  integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
 
 minimist@~0.0.1:
   version "0.0.10"

@@ -1,5 +1,5 @@
-set completeopt=menuone,noselect
-let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+" set completeopt=menuone,noselect
+" let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
 " nnoremap <leader>vd :lua vim.lsp.buf.definition()<CR>
 " nnoremap <leader>vi :lua vim.lsp.buf.implementation()<CR>
@@ -11,7 +11,6 @@ let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 " nnoremap <leader>vsd :lua vim.lsp.diagnostic.show_line_diagnostics(); vim.lsp.util.show_line_diagnostics()<CR>
 " nnoremap <leader>vn :lua vim.lsp.diagnostic.goto_next()<CR>
 " nnoremap <leader>vll :call LspLocationList()<CR>
-
 
 " let g:cmp = {}
 " let g:cmp.enabled = v:true

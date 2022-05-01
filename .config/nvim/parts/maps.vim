@@ -16,12 +16,19 @@ nnoremap <leader>[ :cp<CR>
 nnoremap <leader>ff :Telescope find_files prompt_prefix=🔍<CR>
 nnoremap <leader>gg :Telescope live_grep prompt_prefix=🦖<CR>
 
-function! TelescopeLspRef() 
-    lua vim.lsp.buf.references();
-
-endfunction
 " Highlights a function
 nnoremap <leader>hf Vf{%
+" Netrw
+nnoremap <leader>e :Ex<CR>
 
+imap <silent><script><expr> <C-O> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
 
- 
+map <leader>r :so %<CR>
+
+"
+" EMMET
+imap <C-a> <C-y>, 
+
+" VIM4EVER
+nmap <leader><leader>4 :ToggleVimForeverStart<CR>

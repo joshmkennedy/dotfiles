@@ -13,7 +13,7 @@
 
 	set history=1000 "store the last 1000 command-lines entered
 
-    set termguicolors     
+    set termguicolors   
 
     if (has('nvim'))
         " show results of substition as they're happening
@@ -27,6 +27,7 @@
         set mouse=a
     endif
 
+    "lets try and get good at searching to jump to line
 		set relativenumber
 		set number
 		set number relativenumber
@@ -60,7 +61,7 @@
     set wildmode=list:longest " complete files like a shell
     set shell=$SHELL
     set cmdheight=2 " command bar height
-    set title " set terminal title
+    " set title  "set terminal title
     set showmatch " show matching braces
     set mat=2 " how many tenths of a second to blink
     set updatetime=300
@@ -75,6 +76,15 @@
     set softtabstop=2 " edit as if the tabs are 4 characters wide
     set shiftwidth=2 " number of spaces to use for indent and unindent
     set shiftround " round indent to a multiple of 'shiftwidth'
+
+	autocmd FileType php set tabstop=4
+	autocmd FileType php set softtabstop=4
+	autocmd FileType php set shiftwidth=4
+
+
+	autocmd FileType javascript set tabstop=2
+	autocmd FileType javascript set softtabstop=2
+	autocmd FileType javascript set shiftwidth=2
 
     set textwidth=120
 		set colorcolumn=100
