@@ -2,11 +2,12 @@
   "dependencies": {
     "@sanity/cli": "^1.149.9",
     "@zeit/ncc": "zeit/ncc",
+    "create-astro": "^1.0.0",
     "create-electron-app": "^1.0.0",
     "create-next-app": "^9.2.1",
-    "create-react-app": "^5.0.0",
+    "create-react-app": "^5.0.1",
     "create-redwood-app": "^0.19.1",
-    "create-vite": "^2.9.2",
+    "create-vite": "^3.0.2",
     "cwebp": "^2.0.3",
     "eslint": "^5.12.1",
     "expo-cli": "^3.13.1",
@@ -26,6 +27,7 @@
     "styled-components": "^4.0.2",
     "surge": "^0.20.1",
     "vue-cli": "^2.9.6",
+    "yalc": "^1.0.0-pre.53",
     "yo": "^3.1.1"
   }
 }

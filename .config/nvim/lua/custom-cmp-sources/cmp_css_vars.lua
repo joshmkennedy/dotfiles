@@ -10,6 +10,24 @@ source.new = function()
   return self
 end
 
+function has_config()
+  local cwd =  vim.fn.getcwd()
+  local f = io.open(cwd .. "/init.lua");
+  if f ~=nil then io.close(f) return true else return false end
+end
+
+function get_config()
+  if not has_config() then return nil end
+  local cwd =  vim.fn.getcwd()
+  file = io.open(cwd.."/init.lua")
+  io.input(file)
+  lines = io.read("*all")
+  fn = loadstring(lines)
+  _config = fn()
+  return _config
+end
+
+_config = get_config()
 source.complete = function(self, _, callback)
   local bufnr = vim.api.nvim_get_current_buf()
 
@@ -19,30 +37,39 @@ source.complete = function(self, _, callback)
   -- good programming citizens.
   if not self.cache[bufnr] then
 
-    local cwd = vim.fn.getcwd()
-      -- files = split(files, "\n")
+    local cwd =  vim.fn.getcwd()
     P(cwd)
     
     local items = {}
 
-      file = io.open( files[1], "r")
+      if not has_config() then
+        return nil
+      end
+
+      if not _config then 
+        _config = get_config()
+      end
+
+      filepath = _config.css_vars_path
+      file = io.open(filepath)
       io.input(file)
       lines = io.read("*all")
 
+      P(_config.css_vars_path)
       vars = get_vars(lines)
-      io.close(file)
       P(vars)
+      io.close(file)
       for _, var in ipairs(vars) do
         table.insert(items, {
           label = var.name,
           kind = 6,
           documentation = {
-            kind = "variable",
             value = var.value,
+            kind="variable",
           },
         })
       end
-    P(items)
+
     callback { items = items, isIncomplete = false }
     self.cache[bufnr] = items
 
@@ -111,9 +138,12 @@ function get_vars(lines)
     properties = find_occurrences(root, get_sexpr("property_name"), "css", lines)
     vars = {}
     for _, property_node in ipairs(properties) do
-       prop_name = "--var";
+
+      
+       prop_name = vim.treesitter.get_node_text(property_node,lines)
        if starts_with(prop_name, "--") then
-          prop_value = "value";
+          parent = property_node:parent()
+          prop_value = vim.treesitter.get_node_text(parent:child(2), lines)
           table.insert(vars, {name = prop_name, value = prop_value})
        end
     end
@@ -132,13 +162,4 @@ function split (inputstr, sep)
         return t
 end
 
-function get_node_text(content,startline, startcol, endline, endcol)
-  lines = split(content, "\n")
-  local start_line = startpos.line
-  local start_col = startpos.col
-  local end_col = endpos.col
-  local start_line_text = lines[start_line]
-  text = start_line_text:sub(start_col, end_col)
-  return text
-end
 

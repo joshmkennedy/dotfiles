@@ -14,3 +14,12 @@ alt - 2 : open /Applications/MacPorts/kitty.app
 alt - 5 : open /Applications/slack.app
 alt - 4 : open /Applications/Notion.app
 alt - 1 : open /Applications/Spotify.app
+
+alt - 0 : yabai -m space --layout \
+$( [[ $( yabai -m query --spaces | jq '.[] | select(.["has-focus"]==true) | .type | test("bsp")') == "true"  ]] && echo "stack" || echo "bsp" )
+
+
+ctrl + cmd - left : yabai -m space --rotate 90
+
+shift + ctrl + cmd - right : yabai -m window --space next
+shift + ctrl + cmd - left : yabai -m window --space prev

@@ -77,14 +77,6 @@
     set shiftwidth=2 " number of spaces to use for indent and unindent
     set shiftround " round indent to a multiple of 'shiftwidth'
 
-	autocmd FileType php set tabstop=4
-	autocmd FileType php set softtabstop=4
-	autocmd FileType php set shiftwidth=4
-
-
-	autocmd FileType javascript set tabstop=2
-	autocmd FileType javascript set softtabstop=2
-	autocmd FileType javascript set shiftwidth=2
 
     set textwidth=120
 		set colorcolumn=100
@@ -92,4 +84,7 @@
 
 		set wildignore+=node_modules/**
 		set wildignore+=.git/**
+
+set laststatus=3
+highlight WinSeparator guibg=none guifg=#4B5B8B
 

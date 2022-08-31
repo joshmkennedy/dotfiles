@@ -2,6 +2,7 @@ local ls = require("luasnip")
 -- some shorthands...
 local s = ls.snippet
 local sn = ls.snippet_node
+local fmt = require("luasnip.extras.fmt").fmt 
 local t = ls.text_node
 local i = ls.insert_node
 local f = ls.function_node
@@ -55,23 +56,33 @@ ls.config.set_config({
 
 ls.snippets = {
 	all = require'snippets.general'.load(),
-	javascript = require'snippets.javascript'.load(),
-	javascriptreact =require'snippets.javascript'.load(), 
-	typescript = require'snippets.javascript'.load(),
-	php = require'snippets.php'.load(),
-	svelte = {
-		s("sc",{ t({ "<script>", "", "</script>", "", "<h1></h1>", "", "<style>", "", "</style>" })--[[ scaffolds svelte component  ]]
-		})
-	},
-	go = require'snippets.go'.load(),
-	css = require'snippets.css'.load(),
-	
 }
--- autotriggered snippets have to be defined in a separate table, luasnip.autosnippets.
-ls.autosnippets = {
-	all = {
-		s("autotrigger", {
-			t("autosnippet"),
-		}),
-	},
-} 
+
+function same(index)
+	return  f(function(args)
+		return args[1]
+		end,{index})
+end
+
+function import_f(args)
+	P(args)
+	txt = args[1][1]
+	parts = vim.split(txt,"/",{plain=true})
+	last = parts[#parts]
+	fname = vim.split(last,".",true)[1]
+	return sn(nil, {
+			t(fname)
+		})
+end
+
+ls.add_snippets("javascript",{
+	s("impname", fmt([[
+			import {} from "{}"
+		]],{
+			d(2,import_f,{1}),
+			i(1),
+	}))
+})
+
+ls.filetype_extend("javascriptreact",{"typescript","javascript"})
+ls.filetype_extend("typescriptreact",{"typescript","javascript"})

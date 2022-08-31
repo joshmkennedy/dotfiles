@@ -1,4 +1,7 @@
 local nvim_lsp = require("lspconfig")
+
+require("nvim-lsp-installer").setup()
+
 require("nvim-treesitter.configs").setup {  -- 
     highlight = {
          enable = true,
@@ -8,7 +11,7 @@ require("nvim-treesitter.configs").setup {  --
     textobjects = { enable = true, },
     indentation = {
         enable = true,
-        disable = {"php"}
+        -- disable = {"php"}
     }
 }
 
@@ -75,7 +78,7 @@ end
 	
 -- TYPSCRIPT
 nvim_lsp.tsserver.setup {
-		filetypes = {'typescript','javascript','javascriptreact', 'typescriptreact',},
+		filetypes = {'typescript','javascript','javascriptreact', 'typescriptreact'},
     on_attach = function(client)
         client.resolved_capabilities.document_formatting = false
         on_attach(client)
@@ -169,6 +172,7 @@ nvim_lsp.intelephense.setup{
                 "genesis",
                 "polylang",
                 "sbi"},
+                diagnostics = {enable = true},
             files = {
                 maxSize = 5000000;
             };
@@ -185,6 +189,10 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 nvim_lsp.cssls.setup{
     capabilities = capabilities,
+    on_attach = on_attach
+}
+
+nvim_lsp.tailwindcss.setup{
     on_attach = on_attach
 }
 
@@ -239,7 +247,7 @@ nvim_lsp.diagnosticls.setup {
 			prettier = {
 				command = 'prettier',
 				args = { '--stdin-filepath', '%filename' }
-			}
+			},
 		},
 		formatFiletypes = {
 			css = 'prettier',
@@ -252,12 +260,10 @@ nvim_lsp.diagnosticls.setup {
 			typescriptreact = 'prettier',
 			json = 'prettier',
 			markdown = 'prettier',
-      svelte = 'prettier'
+      svelte = 'prettier',
 		}
 	}
 }
-
-
 
 
 local cmp = require"cmp"
@@ -273,21 +279,21 @@ cmp.setup({
         require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
       end,
     },
-   --  mapping = {
-   --      ["<C-p>"] = cmp.mapping.select_prev_item(),
-   --      ["<C-n>"] = cmp.mapping.select_next_item(),
-   --      ["<C-c>"] = cmp.mapping.close(),
-	  --
-   --      ["<c-y>"] = cmp.mapping.confirm {
-   --              behavior= cmp.ConfirmBehavior.Insert,
-   --              select=true,
-   --              
-   --      },
-   --      ["<c-space>"] = cmp.mapping.complete(),
-	  --
-	  -- },
+    mapping = {
+        ["<C-p>"] = cmp.mapping.select_prev_item(),
+        ["<C-n>"] = cmp.mapping.select_next_item(),
+        ["<C-x>"] = cmp.mapping.close(),
+
+        ["<c-y>"] = cmp.mapping.confirm {
+                behavior= cmp.ConfirmBehavior.Insert,
+                select=true,
+               
+        },
+        ["<c-space>"] = cmp.mapping.complete(),
+
+	  },
     sources = {
-      -- { name = 'css_vars', priority = 100, },
+      { name = 'css_vars', priority = 100, },
       { name = 'nvim_lsp' },
       { name = 'luasnip' }, -- For luasnip users.
       { name = 'path' },
