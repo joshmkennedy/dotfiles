@@ -19,6 +19,7 @@ map("n","<leader>]" ,":cn<CR>", {noremap=true})
 -- TELESCOPE
 map("n","<leader>ff", ":Telescope find_files prompt_prefix=🔍<CR>",{noremap=true})
 map("n","<leader>gg", ":Telescope live_grep prompt_prefix=🦖<CR>",{noremap=true})
+map("n","<leader>hh", ":Telescope harpoon marks<CR>", {noremap=true})
 map("n","<leader>tt", ":Telescope resume<CR>",{noremap=true})
 
 --" Highlights a function
@@ -53,4 +54,5 @@ vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>")
 
 map("n", "<leader>do", ":lua require('dapui').open()")
 
+-- FUGITIVE
 
