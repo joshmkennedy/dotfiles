@@ -4,11 +4,11 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ayu-theme/ayu-vim'
+
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'christoomey/vim-tmux-navigator'
 
-Plug 'rust-lang/rust.vim'
 
 Plug 'ThePrimeagen/harpoon'
 Plug 'ThePrimeagen/vim-be-good'
@@ -18,6 +18,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'numToStr/Comment.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-ui-select.nvim'
+Plug 'ThePrimeagen/vim-apm'
 
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -33,25 +34,24 @@ Plug 'williamboman/nvim-lsp-installer'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'simrat39/symbols-outline.nvim'
 
-
 Plug 'tpope/vim-fugitive'
-
 
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 
-
 Plug 'mattn/emmet-vim'
 
+Plug 'rust-lang/rust.vim'
 Plug 'sheerun/vim-polyglot'
-" Plug 'github/copilot.vim'
+Plug 'leafOfTree/vim-svelte-plugin'
+
 Plug 'lukas-reineke/indent-blankline.nvim'
 
+Plug 'nvim-zh/colorful-winsep.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 " If you want to have icons in your statusline choose one of these
 Plug 'kyazdani42/nvim-web-devicons'
 
-Plug 'ThePrimeagen/vim-apm'
 
 "debugging
 Plug 'leoluz/nvim-dap-go'
@@ -60,7 +60,7 @@ Plug 'rcarriga/nvim-dap-ui'
 Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'nvim-telescope/telescope-dap.nvim'
 
-
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 call plug#end()
 "
@@ -75,7 +75,7 @@ colorscheme catppuccin
 
 " highlight Normal guibg=none ctermbg=none
 " hi EndOfBuffer guibg=NONE ctermbg=NONE
-
+let g:vim_svelte_plugin_load_full_syntax = 1
 
 " highlight LineNr guifg=#836EAE
 " highlight CursorLineNr guifg=#2CC3DF
@@ -136,3 +136,6 @@ autocmd FileType javascript hi DraculaCyanItalic gui=bold
 
 set clipboard=unnamed,unnamedplus
 
+
+let g:vim_be_good_log_file = 1
+let g:vim_be_good_save_statistics = 1

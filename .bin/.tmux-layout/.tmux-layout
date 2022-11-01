@@ -1,0 +1,16 @@
+Title="josh"
+
+[[Windows]]
+	Name="Vite"
+
+	[[Windows.Panels]]
+		Direction="h"
+		Command="cd ~/work/tiktokux/;\n yarn dev\n"
+
+	[[Windows.Panels]]
+		Direction="v"
+
+[[Windows]]
+	Name="List"
+	Command="ls \n"
+	

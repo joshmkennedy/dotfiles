@@ -5,7 +5,7 @@ require("nvim-lsp-installer").setup()
 require("nvim-treesitter.configs").setup {  -- 
     highlight = {
          enable = true,
-        disable = {"css","scss", "svelte", "html","php" },
+        disable = {"css","scss", "html","php" },
     },
     incremental_selection = { enable = true },
     textobjects = { enable = true, },
@@ -68,7 +68,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set( "n", "<Leader>a", ":LspDiagLine<CR>", {silent = true})
     vim.keymap.set( "i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>", {silent = true})
 
-if client.resolved_capabilities.document_formatting then
+if client.server_capabilities.document_formatting then
     vim.api.nvim_command [[augroup Format]]
     vim.api.nvim_command [[autocmd! * <buffer>]]
     vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
@@ -80,7 +80,7 @@ end
 nvim_lsp.tsserver.setup {
 		filetypes = {'typescript','javascript','javascriptreact', 'typescriptreact'},
     on_attach = function(client)
-        client.resolved_capabilities.document_formatting = false
+        client.server_capabilities.document_formatting = false
         on_attach(client)
     end
 }
@@ -172,16 +172,15 @@ nvim_lsp.intelephense.setup{
                 "genesis",
                 "polylang",
                 "sbi"},
-                diagnostics = {enable = true},
+            diagnostics = {enable = true},
             files = {
-                maxSize = 5000000;
+                maxSize = 10000000;
             };
             
         };
     }
 }
 
---nvim_lsp.phpactor.setup{}
 
 
 -- CSS
@@ -193,16 +192,16 @@ nvim_lsp.cssls.setup{
 }
 
 nvim_lsp.tailwindcss.setup{
-    on_attach = on_attach
+    on_attach = on_attach,
 }
 
 nvim_lsp.svelte.setup{}
 
 -- RUST
 local function config(_config)
-	return vim.tbl_deep_extend("force", {
-		capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-	}, _config or {})
+    return vim.tbl_deep_extend("force", {
+    capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+}, _config or {})
 end 
 nvim_lsp.rust_analyzer.setup(config())
 -- DIAGNOSTICLS

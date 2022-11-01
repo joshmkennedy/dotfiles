@@ -2,7 +2,7 @@ local map = vim.keymap.set
 
 vim.mapleader = " "
 
-map("n", ",","<cmd>set hlsearch! hlsearch?<cr>",{noremap=true})
+map("n", "<leader>,","<cmd>set hlsearch! hlsearch?<cr>",{noremap=true})
 -- QUICK
 map("n", "<leader>w","<cmd>w<cr>", {noremap=true})
 map("n", "<leader>q","<cmd>x<cr>", {noremap=true})
