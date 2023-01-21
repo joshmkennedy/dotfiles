@@ -1,0 +1,12 @@
+color = ''
+[default]
+account_id = 'acct_1G7iuFHEbxRCncGM'
+device_name = 'joshs-mac'
+display_name = 'Outthinkgroup'
+live_mode_api_key = 'rk_live_***********************************************************************************************Q2aB'
+live_mode_key_expires_at = '2023-02-09'
+live_mode_pub_key = 'pk_live_32QaYV9S4ziEsBQmAd3L5llv00H9uVGOwR'
+test_mode_api_key = 'rk_test_51G7iuFHEbxRCncGMqh7gK7VrrrHFWqKPUMmCaRwMII6SoHFr15p8f0GgvXwiMbQK0QAp6TZXc8qmEcJPa8cor3Cw0032UOKZTO'
+test_mode_key_expires_at = '2023-02-09'
+test_mode_pub_key = 'pk_test_gLXHhM133Hr3wT95bfbTbjY300a67NU0FP'
+

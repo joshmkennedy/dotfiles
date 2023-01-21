@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@getflywheel/local-cli": "^0.0.5",
     "@sanity/cli": "^1.149.9",
     "@zeit/ncc": "zeit/ncc",
     "create-astro": "^1.0.0",
@@ -7,7 +8,8 @@
     "create-next-app": "^9.2.1",
     "create-react-app": "^5.0.1",
     "create-redwood-app": "^0.19.1",
-    "create-vite": "^3.2.0",
+    "create-t3-app": "^6.10.2",
+    "create-vite": "^4.0.0",
     "cwebp": "^2.0.3",
     "eslint": "^5.12.1",
     "expo-cli": "^3.13.1",
