@@ -1,22 +1,15 @@
-require'globals'
-require'custom-cmp-sources.cmp_css_vars'
-require'lsp'
-require'setup-telescope'
-require'lualine-setup'
-require'setup-comments'
-require'mydap'
+require("plugins")
+require("utils")
+require("lualine-setup")
+require("mason-setup")
+require("treesitter-setup")
+require("cmp-setup")
+require("snippet-setup")
+require("dap-setup")
+require("comments-setup")
+require("telescope-setup")
+require("null-ls-setup")
+require("indent-blanklin-setup")
+require("fire-nvim-setup")
+require("align-setup")
 
-
--- MY CSS STYLASIS PLUGIN 
-require'stylasis-setup'
-
-
-require'luaSnippets'
-require'snippets.php';
-
-
--- vim.opt.list = true
-
-require("indent_blankline").setup {
-    show_end_of_line = true,
-}
