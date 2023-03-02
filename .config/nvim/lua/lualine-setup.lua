@@ -154,7 +154,7 @@ require("lualine").setup({
 			-- wpm.historic_graph,
 			-- {colored=false}
 		},
-    -- lualine_x = {winbar_file},
+    lualine_x = {winbar_file},
     lualine_y = {},
     lualine_z = {}
   },
@@ -162,7 +162,7 @@ require("lualine").setup({
 		lualine_a = {},
 		lualine_b = {},
 		lualine_c = {},
-		-- lualine_x = {winbar_file},
+		lualine_x = {winbar_file},
 		lualine_y = {},
 		lualine_z = {}
 	}
