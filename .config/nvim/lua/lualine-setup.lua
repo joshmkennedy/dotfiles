@@ -151,7 +151,7 @@ require("lualine").setup({
 		},
     lualine_b = {},
     lualine_c = {
-			wpm.wpm,
+			-- wpm.wpm,
 			-- wpm.historic_graph,
 			-- {colored=false}
 		},
