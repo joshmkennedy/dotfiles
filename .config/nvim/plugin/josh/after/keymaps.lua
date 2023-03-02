@@ -8,7 +8,7 @@ map("n", "<leader>q","<cmd>x<cr>", {noremap=true})
 
 -- MOTIONS
 -- map("i", "jj","<esc>",{noremap=true})
-map("i", "<C-c>","<esc>")
+-- map("i", "<C-c>","<esc>")
 
 map("v", "J", ":m '>+1<CR>gv=gv", {noremap=true})
 map("v","K",":m '<-2<CR>gv=gv", {noremap=true})
@@ -48,6 +48,9 @@ map("n","<leader>xx", ":!chmod +x %<CR>",{noremap=true})
 
 
 --" TERM
+map("t","<esc>", "<C-\\><C-n>",{})
+map("t","<C-h>", "<C-\\><C-n><c-w>h",{})
+map("t","<C-l>", "<C-\\><C-n><c-w>l",{})
 
 vim.keymap.set("n", "<F5>", ":lua require'dap'.continue()<CR>")
 vim.keymap.set("n", "<F9>", ":lua require'dap'.step_over()<CR>")
@@ -108,7 +111,4 @@ map("n","<leader>4",function()require("harpoon.ui").nav_file(4)end,{})
 
 -- keymap to open Telescope builtins 
 map("n","<leader>T", ":Telescope builtin prompt_prefix=🔍<CR>",{noremap=true})
--- CODIUM
-vim.keymap.set('i', '<C-o>', function ()
-	return vim.fn['codeium#Accept']()
-end, { expr = true })
+

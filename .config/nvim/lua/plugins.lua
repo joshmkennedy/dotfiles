@@ -32,6 +32,7 @@ return require('packer').startup(function(use)
 	use 'nvim-telescope/telescope.nvim'
 	use 'nvim-telescope/telescope-ui-select.nvim'
 
+
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 	use 'nvim-treesitter/playground'
 
@@ -91,5 +92,15 @@ return require('packer').startup(function(use)
 	-- FONTS
 	use 'ryanoasis/vim-devicons'
 	use 'nvim-tree/nvim-web-devicons'
+
+	use {
+		"jcdickinson/wpm.nvim"	,
+		config = function ()
+			require('wpm').setup({})
+		end
+	}
+	use 'voldikss/vim-floaterm'
+ -- MY PLUGINS
+ use "~/.config/nvim/myplugins/wp-cli-nvim"
 
 end )

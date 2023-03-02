@@ -186,7 +186,7 @@ vim.opt.wildignore:append(".git/**")
 
 --Status line and winbar options
 vim.opt.laststatus=3
--- vim.cmd[[highlight WinSeparator guibg=none guifg=#4B5B8B]]
+vim.cmd[[highlight WinSeparator guibg=none guifg=#4B5B8B]]
 -- vim.api.nvim_create_autocmd("BufWinEnter", {
 -- 		callback = function()
 -- 			if vim.bo.filetype == "" then
@@ -195,5 +195,5 @@ vim.opt.laststatus=3
 -- 			vim.wo.winbar = "%=%m%f"
 -- 		end
 -- 	})
--- vim.cmd[[highlight WinBar guibg=none guifg=#4B5B8B gui=italic]]
+vim.cmd[[highlight WinBar guibg=none guifg=#7A82A2 gui=italic]]
 

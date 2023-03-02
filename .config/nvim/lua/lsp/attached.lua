@@ -1,4 +1,9 @@
 
+
+local lsp_formatting = function (bufnr)
+
+end
+
 return function(client, bufnr)
     local buf_map = vim.api.nvim_buf_set_keymap
     vim.cmd("command! LspDef lua vim.lsp.buf.definition()")
@@ -29,6 +34,8 @@ return function(client, bufnr)
     vim.keymap.set( "n", "ga", ":LspCodeAction<CR>", {silent = true})
     vim.keymap.set( "n", "<Leader>a", ":LspDiagLine<CR>", {silent = true})
     vim.keymap.set( "i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>", {silent = true})
+
+
 end
 
 

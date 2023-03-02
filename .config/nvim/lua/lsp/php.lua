@@ -65,6 +65,7 @@ return {
                 "polylang",
             "sbi"},
             diagnostics = {enable = true},
+            format= {enable = false},
             files = {
                 maxSize = 10000000;
             };

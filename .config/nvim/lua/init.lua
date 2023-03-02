@@ -12,4 +12,3 @@ require("null-ls-setup")
 require("indent-blanklin-setup")
 require("fire-nvim-setup")
 require("align-setup")
-

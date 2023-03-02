@@ -47,7 +47,6 @@ return {
             css = 'prettier',
             javascript = 'prettier',
             javascriptreact = 'prettier',
-            json = 'prettier',
             scss = 'prettier',
             less = 'prettier',
             typescript = 'prettier',

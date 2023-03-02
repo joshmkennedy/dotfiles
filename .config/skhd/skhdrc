@@ -13,7 +13,7 @@ alt - 3 : open /Applications/Arc.app
 alt - 2 : open /Applications/MacPorts/kitty.app
 alt - 5 : open /Applications/slack.app
 alt - 4 : open /Applications/Notion.app
-alt - 1 : open /Applications/Spotify.app
+alt - 1 : open /Applications/Obsidian.app
 
 alt - 0 : yabai -m space --layout \
 $( [[ $( yabai -m query --spaces | jq '.[] | select(.["has-focus"]==true) | .type | test("bsp")') == "true"  ]] && echo "stack" || echo "bsp" )
