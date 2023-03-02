@@ -6,7 +6,6 @@ local status_web_devicons_ok, web_devicons = pcall(require, 'nvim-web-devicons')
 local wpm = require'wpm'
 local opts ={
 	show_file_path = true,
-
 	show_symbols = true,
 
 	colors = {
