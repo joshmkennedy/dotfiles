@@ -1,4 +1,4 @@
-on_attach = require("lsp.attached")
+local on_attach = require("lsp.attached")
 return {
     cmd = {'gopls'},
     capabilities = vim.lsp.protocol.make_client_capabilities(),
@@ -12,5 +12,5 @@ return {
             staticcheck = true,
         },
     },
-    on_attach = on_attach 
+    on_attach = on_attach
 }

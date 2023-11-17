@@ -65,6 +65,22 @@ dap.configurations.typescript = { -- change to typescript if needed
     }
 }
 
+dap.adapters.php = {
+  type = 'executable',
+  command = 'node',
+  args = { os.getenv("HOME") .. '/.config/dap-adapters/vscode-php-debug/out/phpDebug.js' }
+}
+
+dap.configurations.php = {
+  {
+    type = 'php',
+    request = 'launch',
+    name = 'Listen for Xdebug',
+    port = 9003,
+		localSourceRoot = '/Users/joshkennedy/work/louisville'
+  }
+}
+
 dap.listeners.after.event_initialized["dapui_config"] = function ()
     dapui.open()
 end

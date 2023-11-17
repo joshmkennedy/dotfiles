@@ -1,16 +1,33 @@
-Title="josh"
+# Title of the Layout
+Title="josh"# Currently unused in in program
 
+#What window to focus after its been setup
+Focus = 1
+#Command for Window 1
+Command="echo Pane 1\n"
+# What additional windows to create
 [[Windows]]
-	Name="Vite"
+	# options for Windows
+	# Name: name of the tmux window
+	# Command: what should be run when window is created
+	Name="Window 2"
+	Command="echo Window 2 \n"
 
+	# Panels addtional splits for the window
 	[[Windows.Panels]]
+		# Options
+		# Direction: how should this pane be split
+			# v: for vertical split (|)
+			# h: for horizontal split (—)
 		Direction="h"
-		Command="cd ~/work/tiktokux/;\n yarn dev\n"
+		# Command: what command should be run when pane is created
+		Command="echo Pane 2\n"
 
-	[[Windows.Panels]]
+		# Children: additional splits for pane in herits all panel options
+		[[Windows.Panels.Children]]
 		Direction="v"
-
+		Command="echo Pane 3\n"
 [[Windows]]
-	Name="List"
-	Command="ls \n"
-	
+	Name="Window 3"
+	Command="echo Window 3\n"
+

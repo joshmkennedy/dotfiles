@@ -8,7 +8,16 @@ require("snippet-setup")
 require("dap-setup")
 require("comments-setup")
 require("telescope-setup")
-require("null-ls-setup")
 require("indent-blanklin-setup")
 require("fire-nvim-setup")
 require("align-setup")
+require("trouble-setup")
+require("circle-setup")
+require("edgy-setup")
+-- require("flash-setup")
+require("refactoring-setup")
+require("nvim-colorizer-setup")
+require("zenmode-setup")
+
+
+

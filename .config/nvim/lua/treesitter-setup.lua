@@ -10,7 +10,7 @@ require("nvim-treesitter.configs").setup({
 	textobjects = { enable = true },
 	indentation = {
 		enable = true,
-		disable = {"php"}
+		disable = {"php",}
 	},
 })
 

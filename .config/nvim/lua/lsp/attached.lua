@@ -35,6 +35,8 @@ return function(client, bufnr)
     vim.keymap.set( "n", "<Leader>a", ":LspDiagLine<CR>", {silent = true})
     vim.keymap.set( "i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>", {silent = true})
 
+		vim.keymap.set("n", "<Leader>!", "<cmd>LspRestart<CR><cmd>e!<CR>", {})
+
 
 end
 

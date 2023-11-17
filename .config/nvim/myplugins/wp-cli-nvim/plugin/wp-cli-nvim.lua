@@ -2,7 +2,6 @@ local Job = require('plenary.job')
 local utils = require('wp-cli-nvim.utils')
 local cmd_parser = require('wp-cli-nvim.parse-args')
 local P = utils.P
-local split = utils.split
 
 if vim.g.wp_cli_nvim_loaded == 1 then
   return
@@ -11,9 +10,8 @@ vim.g.wp_cli_nvim_loaded = 1
 
 
 vim.api.nvim_create_user_command("Wp", function(opts)
-  parser = cmd_parser:new()
-  args = parser:parse(opts.fargs)
-  P(args)
+  local parser = cmd_parser:new()
+  local args = parser:parse(opts.fargs)
  Job:new({
      command = "wp",
      args = args,
@@ -22,7 +20,7 @@ vim.api.nvim_create_user_command("Wp", function(opts)
         P(j:result())
       end
      end,
-     on_stderr = function(j, return_val)
+     on_stderr = function(_, return_val)
        P("error")
        P(return_val)
        -- P(j)

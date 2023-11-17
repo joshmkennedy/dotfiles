@@ -1,0 +1,23 @@
+-- require("edgy").setup({
+-- 	exit_when_last = true,
+-- 	fix_win_height = true,
+-- 	animate = {
+-- 		cps = 320,
+-- 	},
+-- 	right = {
+-- 		"neo-tree",
+-- 	},
+-- 	top = {
+-- 		{
+-- 			title = "Term",
+-- 			ft = "toggleterm",
+-- 			pinned = true,
+-- 			open = "TermExec node",
+-- 			size = { height = 0.3, width = .5 },
+-- 			-- exclude floating windows
+-- 			filter = function(buf, win)
+-- 				return vim.api.nvim_win_get_config(win).relative == ""
+-- 			end,
+-- 		}
+-- 	},
+-- })

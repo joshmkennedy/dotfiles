@@ -2103,6 +2103,23 @@
   resolved "https://registry.yarnpkg.com/@calebboyd/semaphore/-/semaphore-1.3.1.tgz#4faa403d12f80e5d5c1d6e0d7916d048b6fa79cb"
   integrity sha512-17z9me12RgAEcMhIgR7f+BiXKbzwF9p1VraI69OxrUUSWGuSMOyOTEHQNVtMKuVrkEDVD0/Av5uiGZPBMYZljw==
 
+"@clack/core@^0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@clack/core/-/core-0.3.2.tgz#23c6e440ed263c2f012b1cc0806386481e78420b"
+  integrity sha512-FZnsNynwGDIDktx6PEZK1EuCkFpY4ldEX6VYvfl0dqeoLPb9Jpw1xoUXaVcGR8ExmYNm1w2vdGdJkEUYD/2pqg==
+  dependencies:
+    picocolors "^1.0.0"
+    sisteransi "^1.0.5"
+
+"@clack/prompts@^0.6.3":
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/@clack/prompts/-/prompts-0.6.3.tgz#c6184bb3f8685dfc72207d2ff051f7a6a733fcb3"
+  integrity sha512-AM+kFmAHawpUQv2q9+mcB6jLKxXGjgu/r2EQjEwujgpCdzrST6BJqYw00GRn56/L/Izw5U7ImoLmy00X/r80Pw==
+  dependencies:
+    "@clack/core" "^0.3.2"
+    picocolors "^1.0.0"
+    sisteransi "^1.0.5"
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"
@@ -8327,6 +8344,14 @@ create-redwood-app@^0.19.1:
     tmp "^0.2.1"
     yargs "^16.0.3"
 
+create-svelte@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/create-svelte/-/create-svelte-3.3.0.tgz#7adfb3b912805d4c16306b58b5ebe7135d8b764b"
+  integrity sha512-t3PXx0u3AcNXZWhC+gT8jCZfHnbl/IgfTD9/mmIM1jf7vzDheZGxX4oKiDgn4f09nz1vjM3lpmi1ji3u47GHDQ==
+  dependencies:
+    "@clack/prompts" "^0.6.3"
+    kleur "^4.1.5"
+
 create-t3-app@^6.10.2:
   version "6.10.2"
   resolved "https://registry.yarnpkg.com/create-t3-app/-/create-t3-app-6.10.2.tgz#cd449162d4cf8a6de9fd25d77bab95ed45ead212"
@@ -8341,10 +8366,10 @@ create-t3-app@^6.10.2:
     ora "6.1.2"
     sort-package-json "^2.0.0"
 
-create-vite@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/create-vite/-/create-vite-4.1.0.tgz#107931dd181c8caa32ae32152367ac76c6d9d7ae"
-  integrity sha512-IQAkwLJcp/6fQUnB2CBxTnsT5xfaHDUTCUi/LLWZTrzfrhVvtoKv9eHuXoG+XzyOyNgqUPJi9aNzwTXqSHw8Vg==
+create-vite@^4.4.1:
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/create-vite/-/create-vite-4.4.1.tgz#7d29a6ec53491914d3b176a7facfecba1b2659fd"
+  integrity sha512-VbE5lc4aO7gterlwTDPxfnEhp/e0xAJui7NydmQiLpKq2yBLTQGcfMXeZeyoIH+E/Di2MQpE4o0K3lZNjlFL+A==
 
 cross-fetch@2.2.2:
   version "2.2.2"
@@ -15346,7 +15371,7 @@ kleur@^3.0.3:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
-kleur@^4.1.4:
+kleur@^4.1.4, kleur@^4.1.5:
   version "4.1.5"
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-4.1.5.tgz#95106101795f7050c6c650f350c683febddb1780"
   integrity sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==
@@ -18947,6 +18972,11 @@ physical-cpu-count@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/physical-cpu-count/-/physical-cpu-count-2.0.0.tgz#18de2f97e4bf7a9551ad7511942b5496f7aba660"
   integrity sha1-GN4vl+S/epVRrXURlCtUlverpmA=
+
+picocolors@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/picocolors/-/picocolors-1.0.0.tgz#cb5bdc74ff3f51892236eaf79d68bc44564ab81c"
+  integrity sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==
 
 picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.3:
   version "2.3.0"

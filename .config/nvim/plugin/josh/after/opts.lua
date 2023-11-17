@@ -86,6 +86,10 @@ vim.opt.wildignore:append(".git/**")
 vim.opt.laststatus=3
 -- highlight WinSeparator guibg=none guifg=#4B5B8B
 
+-- Default splitting will cause your main splits to jump when opening an edgebar.
+-- To prevent this, set `splitkeep` to either `screen` or `topline`.
+vim.opt.splitkeep = "screen"
+
 vim.opt.autoread=true -- detect when a file is changed
 
 -- WARNING: These settings disable vim's backups (swap files).
@@ -184,6 +188,8 @@ vim.opt.colorcolumn="100"
 vim.opt.wildignore:append("node_modules/**")
 vim.opt.wildignore:append(".git/**")
 
+vim.opt.foldmethod = "marker"
+
 --Status line and winbar options
 vim.opt.laststatus=3
 vim.cmd[[highlight WinSeparator guibg=none guifg=#4B5B8B]]
@@ -197,3 +203,6 @@ vim.cmd[[highlight WinSeparator guibg=none guifg=#4B5B8B]]
 -- 	})
 vim.cmd[[highlight WinBar guibg=none guifg=#7A82A2 gui=italic]]
 
+-- set global opt
+vim.g.codeium_no_map_tab = 1
+vim.g.codeium_manual = 1

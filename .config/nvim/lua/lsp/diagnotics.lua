@@ -1,4 +1,4 @@
-on_attach = require("lsp.attached")
+local on_attach = require("lsp.attached")
 
 return {
     on_attach = on_attach,
@@ -31,6 +31,7 @@ return {
             javascriptreact = 'eslint',
             typescript = 'eslint',
             typescriptreact = 'eslint',
+						svelte = "eslint",
         },
         formatters = {
             eslint_d = {
@@ -40,7 +41,8 @@ return {
             },
             prettier = {
                 command = 'prettier',
-                args = { '--stdin-filepath', '%filename' }
+                args = { '--stdin-filepath', '%filename' },
+								rootPatterns = { '.git' },
             },
         },
         formatFiletypes = {

@@ -3,7 +3,6 @@ local hl_winbar_file = 'WinBarFile'
 local hl_winbar_symbols = 'WinBarSymbols'
 local hl_winbar_file_icon = 'WinBarFileIcon'
 local status_web_devicons_ok, web_devicons = pcall(require, 'nvim-web-devicons')
-local wpm = require'wpm'
 local opts ={
 	show_file_path = true,
 	show_symbols = true,
@@ -87,19 +86,43 @@ local winbar_file = function()
     return value
 
 end
-
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
-		theme = "auto",
-		component_separators = { left = "", right = "" },
-		section_separators = { left = "", right = "" },
+		theme = "dracula-nvim",
+		section_separators = { left = '', right = '' },
+		-- section_separators = { left = "", right = "" },
+		component_separators = '|',
 		disabled_filetypes = {},
 		always_divide_middle = true,
 		globalstatus = true,
 	},
 	sections = {
-		lualine_a = { "mode" },
+		lualine_a = {
+			{ 'mode',
+				fmt = function(str) 
+					if(str == "NORMAL") then
+						return "󱣱"
+					end
+					if(str == "INSERT") then
+						return ""
+					end
+					if(str == "COMMAND") then 
+						return "󰘳"
+					end
+					if(str == "V-LINE") then
+						return "󰈈"
+					end
+					if(str == "VISUAL") then 
+						return "󰛐"
+					end
+					return str:sub(1,1)
+				end,
+				separator = { left = '' },
+				right_padding = 0,
+				left_padding=2,
+			},
+		},
 		lualine_b = {
 			"branch",
 			{
@@ -111,7 +134,9 @@ require("lualine").setup({
 					removed = "lualine_b_diagnostics_error_insert",
 				},
 			},
-			"diagnostics",
+			{"diagnostics",
+				separator = { right = '' },
+		},
 		},
 		lualine_c = {
 			{
@@ -127,7 +152,7 @@ require("lualine").setup({
 					unamed = "[No Name]", -- Text to show for unnamed buffers.
 				},
 				fmt = function(text)
-					return "%=" .. text
+					return text
 				end,
 			},
 		},
@@ -150,9 +175,6 @@ require("lualine").setup({
 		},
     lualine_b = {},
     lualine_c = {
-			-- wpm.wpm,
-			-- wpm.historic_graph,
-			-- {colored=false}
 		},
     lualine_x = {winbar_file},
     lualine_y = {},

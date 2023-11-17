@@ -29,7 +29,7 @@ map("n","<leader>hf", "Vf{%",{noremap=true})
 map("v","<leader>hf", "f{%",{noremap=true})
 
 --" Netrw
-map("n","<leader>e", ":Ex<CR>",{noremap=true})
+map("n","<leader>e", ":Neotree toggle<CR>",{noremap=true})
 
 --CONFIG HELP
 map("n","<leader>r", ":so %<CR>", {noremap=true})
@@ -100,7 +100,7 @@ end,{noremap=true})
 
 -- vim.keymap.set("i", "<c-u>", require "luasnip.extras.select_choice")
 
-
+		map("n", "<leader>t", ":ToggleTerm<CR>",{});
 
 map("n","<leader>ha",function() require("harpoon.mark").add_file()end,{})
 map("n","<leader>hm",function() require("harpoon.ui").toggle_quick_menu()end,{})
@@ -112,3 +112,26 @@ map("n","<leader>4",function()require("harpoon.ui").nav_file(4)end,{})
 -- keymap to open Telescope builtins 
 map("n","<leader>T", ":Telescope builtin prompt_prefix=🔍<CR>",{noremap=true})
 
+
+map("n", "<leader>s", function () require"flash".jump() end, {})
+
+--REFACTORING.NVIM
+require("telescope").load_extension("refactoring")
+vim.keymap.set(
+	{"n", "x"},
+	"<leader>rr",
+	function() require('telescope').extensions.refactoring.refactors() end
+)
+
+-- You can also use below = true here to to change the position of the printf
+-- statement (or set two remaps for either one). This remap must be made in normal mode.
+vim.keymap.set(
+	"n",
+	"<leader>rp",
+	function() require('refactoring').debug.printf({below = false}) end
+)
+-- Print var
+vim.keymap.set({"x", "n"}, "<leader>rv", function() require('refactoring').debug.print_var() end)
+-- Supports both visual and normal mode
+vim.keymap.set("n", "<leader>rc", function() require('refactoring').debug.cleanup({}) end)
+-- Supports only normal mode
