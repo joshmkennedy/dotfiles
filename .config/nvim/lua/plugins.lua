@@ -1,5 +1,9 @@
 return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
+	--COLORSCHEME
+	-- use("catppuccin/nvim")
+	--  asea
+	use { 'mistricky/codesnap.nvim', run = 'make' }
 
 	use({
 		"catppuccin/nvim",
@@ -9,6 +13,7 @@ return require("packer").startup(function(use)
 	use("folke/tokyonight.nvim")
 	use "rebelot/kanagawa.nvim"
 	use 'Mofiqul/dracula.nvim'
+	use 'rose-pine/neovim'
 
 	use({ "tjdevries/colorbuddy.nvim" })
 
@@ -25,7 +30,7 @@ return require("packer").startup(function(use)
 
 	use("glepnir/dashboard-nvim")
 	use({ "lukas-reineke/indent-blankline.nvim", disable = false })
-	use({ "folke/edgy.nvim" })
+	use({ "gh-liu/fold_line.nvim" })
 
 	use("numToStr/Comment.nvim") -- [ ]
 	use("Vonr/align.nvim")
@@ -33,7 +38,12 @@ return require("packer").startup(function(use)
 	use("nvim-lualine/lualine.nvim")
 
 	--NAVIGATION of files
-	use("ThePrimeagen/harpoon") -- [ ]
+	use({
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		requires = { { "nvim-lua/plenary.nvim" } }
+	})
+
 	use("ThePrimeagen/vim-be-good")
 	use("nvim-telescope/telescope.nvim")
 	use("nvim-telescope/telescope-ui-select.nvim")
@@ -84,7 +94,33 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use "folke/flash.nvim"
+	use {
+		"SmiteshP/nvim-navbuddy",
+		requires = {
+			"neovim/nvim-lspconfig",
+			"SmiteshP/nvim-navic",
+			"MunifTanjim/nui.nvim",
+			"numToStr/Comment.nvim",     -- Optional
+			"nvim-telescope/telescope.nvim" -- Optional
+		}
+	}
+
+	use {
+		'ricardoramirezr/blade-nav.nvim',
+		requires = {
+			'hrsh7th/nvim-cmp',                 -- if using nvim-cmp
+			{ "ms-jpq/coq_nvim", branch = "coq" }, -- if using coq
+		},
+		ft = { 'blade', 'php' }
+	}
+
+	use({
+		"stevearc/conform.nvim",
+		config = function()
+			require("conform").setup()
+		end,
+	})
+
 
 	use { "akinsho/toggleterm.nvim", tag = '*', config = function()
 		require("toggleterm").setup({
@@ -94,20 +130,31 @@ return require("packer").startup(function(use)
 		})
 	end }
 
-	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("nvim-treesitter/playground")
+	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
 	use({
 		'Wansmer/treesj',
-		requires = { 'nvim-treesitter' },
+		requires = { 'nvim-treesitter/nvim-treesitter' },
 		config = function()
-			require('treesj').setup({ --[[ your config ]] })
+			require('treesj').setup({
+				--[[ your config ]]
+				use_default_keymaps = false,
+			})
 		end,
 	})
+
 	-- LSP
 	use({ "williamboman/mason.nvim" })
 	use("williamboman/mason-lspconfig.nvim")
 	use("neovim/nvim-lspconfig")
+	use 'mfussenegger/nvim-lint'
+	use {
+		"pmizio/typescript-tools.nvim",
+		requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+	}
+
+	use "j-hui/fidget.nvim"
 
 	use("ThePrimeagen/refactoring.nvim")
 
@@ -119,7 +166,12 @@ return require("packer").startup(function(use)
 	--DEBUGGING
 	use("mfussenegger/nvim-dap")
 	use("leoluz/nvim-dap-go")
-	use("rcarriga/nvim-dap-ui")
+	use({
+		"rcarriga/nvim-dap-ui",
+		requires = {
+			'nvim-neotest/nvim-nio'
+		}
+	})
 	use("theHamsta/nvim-dap-virtual-text")
 	use("nvim-telescope/telescope-dap.nvim")
 
@@ -133,14 +185,59 @@ return require("packer").startup(function(use)
 	use("hrsh7th/nvim-cmp")
 
 	-- AI SUGGESTS
+
 	use {
-		'Exafunction/codeium.vim',
+		"supermaven-inc/supermaven-nvim",
+	}
+
+	use "stevearc/dressing.nvim"
+	use 'HakonHarnes/img-clip.nvim'
+	use 'zbirenbaum/copilot.lua'
+
+	use {
+		'yetone/avante.nvim',
+		branch = 'main',
+		run = 'make',
 		config = function()
-			vim.keymap.set('i', '<C-o>', function()
-				return vim.fn['codeium#Accept']()
-			end, { expr = true, silent = true })
+			require('avante').setup({
+				provider = "openai",
+				mappings = {
+					diff = {
+						ours = "co",
+						theirs = "ct",
+						all_theirs = "ca",
+						both = "cb",
+						cursor = "c.",
+						next = "]x",
+						prev = "[x",
+					},
+					suggestion = {
+						accept = "<M-l>",
+						next = "<M-]>",
+						prev = "<M-[>",
+						dismiss = "<C-]>",
+					},
+					jump = {
+						next = "]]",
+						prev = "[[",
+					},
+					submit = {
+						normal = "<CR>",
+						insert = "<C-s>",
+					},
+					sidebar = {
+						apply_all = "A",
+						apply_cursor = "a",
+						switch_windows = "<Tab>",
+						reverse_switch_windows = "<S-Tab>",
+					},
+				}
+			})
 		end
 	}
+
+
+	-- Packer.nvim, also make sure to install nvim-lua/plenary.nvim
 
 	-- END AUTOCOMPLETE
 	--
@@ -161,6 +258,7 @@ return require("packer").startup(function(use)
 
 	use({
 		"glacambre/firenvim",
+		disable = true,
 		run = function()
 			vim.fn["firenvim#install"](0)
 		end,
@@ -174,11 +272,11 @@ return require("packer").startup(function(use)
 	use({
 		"StanAngeloff/php.vim",
 	})
+	use("HiPhish/rainbow-delimiters.nvim")
 	use 'nkrkv/nvim-treesitter-rescript'
 	use 'rescript-lang/vim-rescript'
 
 	-- FONTS
-	use("ryanoasis/vim-devicons")
 	use("nvim-tree/nvim-web-devicons")
 
 	use("voldikss/vim-floaterm")
@@ -215,6 +313,16 @@ return require("packer").startup(function(use)
 		end
 	})
 
+	use {
+		"folke/snacks.nvim",
+	}
+
+	use({
+		"MeanderingProgrammer/render-markdown.nvim",
+		after = { 'nvim-treesitter' },
+		requires = { 'echasnovski/mini.nvim', opt = true }, -- if you prefer nvim-web-devicons
+	})
+
 	--JUST FOR FUNNNNN ✨
 	use({ "eandrju/cellular-automaton.nvim", enabled = false })
 	-- MY PLUGINS
@@ -222,4 +330,7 @@ return require("packer").startup(function(use)
 	use("~/.config/nvim/myplugins/phpdockit")
 	use("~/.config/nvim/myplugins/fancyheader")
 	use("~/.config/nvim/myplugins/search-gui")
+	use("~/.config/nvim/myplugins/gpt")
+	use({ "~/.config/nvim/myplugins/test-lsp", enable = false })
+	use("~/projects/myfiles/myfiles.nvim")
 end)

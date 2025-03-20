@@ -67,15 +67,6 @@ vim.opt.softtabstop=2 -- edit as if the tabs are 4 characters wide
 vim.opt.shiftwidth=2 -- number of spaces to use for indent and unindent
 vim.opt.shiftround = true -- round indent to a multiple of 'shiftwidth'
 
--- autocmd FileType php vim.opt.tabstop=4
--- autocmd FileType php vim.opt.softtabstop=4
--- autocmd FileType php vim.opt.shiftwidth=4
---
---
--- autocmd FileType javascript vim.opt.tabstop=2
--- autocmd FileType javascript vim.opt.softtabstop=2
--- autocmd FileType javascript vim.opt.shiftwidth=2
-
 vim.opt.textwidth=120
 vim.opt.colorcolumn="100"
 --vim.opt.co=120
@@ -83,7 +74,6 @@ vim.opt.colorcolumn="100"
 vim.opt.wildignore:append("node_modules/**")
 vim.opt.wildignore:append(".git/**")
 
-vim.opt.laststatus=3
 -- highlight WinSeparator guibg=none guifg=#4B5B8B
 
 -- Default splitting will cause your main splits to jump when opening an edgebar.
@@ -105,7 +95,6 @@ vim.opt.backupdir= "~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp" -- change where swap 
 
 vim.opt.history=1000 --store the last 1000 command-lines entered
 
-vim.opt.termguicolors = true
 
 -- if (has('nvim'))
 --              -- show results of substition as they're happening
@@ -121,7 +110,6 @@ vim.opt.clipboard="unnamed,unnamedplus"
 
 --lets try and get good at searching to jump to line
 vim.opt.relativenumber = true
-vim.opt.number = true
 
 vim.opt.cursorline = true
 vim.opt.ignorecase = true -- case insensitive searching
@@ -141,7 +129,6 @@ vim.opt.tm=500
 vim.opt.autoindent = true -- automatically vim.opt.indent of new line
 vim.opt.ttyfast = true -- faster redrawing h
 vim.opt.diffopt:append("vertical,iwhite,internal,algorithm:patience,hiddenoff")
-vim.opt.laststatus=2 -- show the status line all the time
 vim.opt.so=7 -- vim.opt.7 lines to the cursors - when moving vertical
 vim.opt.wildmenu = true -- enhanced command line completion
 -- vim.opt.hidden -- current buffer can be put into background
@@ -162,7 +149,7 @@ vim.opt.ttimeoutlen=300
 vim.opt.showcmd = true -- show incomplete commands
 vim.opt.showmode = false -- don't show which mode disabled for PowerLine
 vim.opt.wildmode="list:longest" -- complete files like a shell
-vim.api.nvim_exec("set shell=$SHELL", true)
+-- vim.api.nvim_exec("set shell=$SHELL", true)
 vim.opt.cmdheight=2 -- command bar height
 -- vim.opt.title  --vim.opt.terminal title
 vim.opt.showmatch = true -- show matching braces"
@@ -188,10 +175,9 @@ vim.opt.colorcolumn="100"
 vim.opt.wildignore:append("node_modules/**")
 vim.opt.wildignore:append(".git/**")
 
-vim.opt.foldmethod = "marker"
 
 --Status line and winbar options
-vim.opt.laststatus=3
+
 vim.cmd[[highlight WinSeparator guibg=none guifg=#4B5B8B]]
 -- vim.api.nvim_create_autocmd("BufWinEnter", {
 -- 		callback = function()
@@ -201,8 +187,4 @@ vim.cmd[[highlight WinSeparator guibg=none guifg=#4B5B8B]]
 -- 			vim.wo.winbar = "%=%m%f"
 -- 		end
 -- 	})
-vim.cmd[[highlight WinBar guibg=none guifg=#7A82A2 gui=italic]]
 
--- set global opt
-vim.g.codeium_no_map_tab = 1
-vim.g.codeium_manual = 1

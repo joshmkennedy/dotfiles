@@ -19,3 +19,129 @@ $tool::all()
 $user\040=\040new\040\134App\134Model\134User;
 $user\040=\040new\040\134App\134Models\134User;
 $user::all()
+$todo\040=\040new\040\134App\134Models\134Todo;
+$todo::create()
+$todo::create('new\040todo',\040'this\040is\040a\040new\040todo',\0400)
+$todo::create(['title'=>'new\040todo',\040'description'=>'this\040is\040a\040new\040todo',\040'parentId'=>0]);
+$todo::create(['title'=>'new\040todo',\040'description'=>'this\040is\040a\040new\040todo']);
+$todo::all
+$todo::all()
+$todo::find(1)
+$todo::find(1)->completed_at\040=\040date();
+$todo::find(1)->completed_at\040=\040time();
+$todo->save()
+$todo->find(1)->save()
+$todo::all()
+$first\040=\040$todo::find(1);
+$first->completed_at\040=\040time();
+$first->save();
+$first->completed_at\040=\040date(time());
+$first->completed_at\040=\040date("YYYY-MM-DD\040HH:MI:SS",time());
+$first->completed_at\040=\040date("Y-M-D\040H:MI:S",time());
+$first->completed_at\040=\040date("Y-M-D\040h:m:s",time());
+$first->save()
+$first->completed_at\040=\040date("Y-M-d\040h:m:s",time());
+$first->save()
+$first->completed_at\040=\040date("y-m-d\040h:m:s",time());
+$first->save()
+$todos::all()
+$todo::all()
+$todo::create(['title'=>'new\040todo',\040'description'=>'this\040is\040a\040new\040todo']);
+$todos\040=\040new\040\134App\134Models\134Todo;
+$todos::create(['title'=>'new\040todo',\040'description'=>'a\040new\040todo')
+$todos::create(['title'=>'new\040todo',\040'description'=>'a\040new\040todo'])
+$first\040=\040$todos::find(1)
+$first->completed_at\040=\040date("y-m-d\040h:m:s",time());
+$first->save()
+$todos::all()
+$todos\040=\040\134App\134Models\134Todo;
+$todos\040=\040\134app\134Models\134Todo;
+$todos\040=\040new\040\134App\134Models\134Todo;
+$todos::all()
+$todos::all()
+$todos\040=\040new\040\134App\134Models\134Todo
+$todos::all()
+$todos::all()
+$todos\040=\040new\040\134App\134Models\134Todo
+$todos::all()
+date('y\040m\040d\040h:m:s',time())
+\App\Models\Events::all()
+\App\Model\Event::all()
+\App\Models\Event::all()
+$e = new \App\Model\Event();
+$e = new \App\Models\Event()
+clear;
+\App\Models\Events::find(4)
+\App\Models\Event::find(4)
+$e = \App\Models\Event::find(4)
+$e->invitations()
+$e->invitations()::all()
+$e->invitations()->get('email')
+$e->update
+$e = \App\Models\Event::find(4)
+$e->invitees();
+$e->invitations()->emails
+$e->invitations()->email
+$e->invitations()-
+$e->invitations()
+$e->invitations()
+$e = \App\Models\Event::find(4)
+$e->invitations()
+$e->invitations()::all()
+$e->invitations()::find
+$e->invitations()::find(1)
+$e->invitations();
+$e->invitations()->get()
+$e->invitations()->get()->each(fn($s)=>$s->email)
+$e->invitations()->get()->each(fn($s)=>$s->email)
+$e = \App\Models\Event::find(5)
+$e->invitations()->get(['email'])
+$e->invitations()->get()
+$e->invitations()->get()->maybeUser()
+$e->invitations()->get()->each(fn($i)=>$i->maybeUser());
+$e->invitations()->get()->map(fn($i)=>$i->maybeUser());
+$e->invitees();
+$e->invitees();
+$e = \App\Models\Event::find(5)
+$e->invitees();
+$u new \App\Models\User(1);
+$u= new \App\Models\User(1);
+$u= new \App\Models\User::find(1);
+$u= new \App\Models\User
+$u = $u->find(1)
+$u->languages();
+$u->languages()->all();
+$u->languages()->get();
+$u= new \App\Models\User
+$u = $u->find(1)
+$u->languages()->get();
+$u= new \App\Models\User
+$u = $u->find(1)
+$u->languages()
+$u->languages()->get();
+$u->languages()->get();
+$u= new \App\Models\User
+$u = $u->find(1)
+$u->languages()->get();
+$u->languages()->get();
+$u= new \App\Models\User
+$u = $u->find(1)
+$u->languages()->get();
+$u= new \App\Models\User
+$u = $u->find(1)
+$u->languages()->get();
+$u= new \App\Models\User
+$u = $u->find(1)
+$u->languages()->get();
+$u = $u->find(1)
+$u= new \App\Models\User
+$u = $u->find(1)
+$u->languages()->get();
+$u= new \App\Models\User
+$u = $u->find(1)
+$u->languages()->get();
+$d = new DateTime();
+$d->format("N")
+$user = (new \App\Models\User)->find(1);
+$user->languages->get()
+$user->languages->all()

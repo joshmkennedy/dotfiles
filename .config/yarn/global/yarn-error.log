@@ -1,29 +1,29 @@
 Arguments: 
-  /Users/joshkennedy/.nvm/versions/node/v19.0.0/bin/node /opt/homebrew/Cellar/yarn/1.22.19/libexec/bin/yarn.js create create-next-app .
+  /Users/joshkennedy/.nvm/versions/node/v20.2.0/bin/node /opt/homebrew/Cellar/yarn/1.22.19/libexec/bin/yarn.js create @wordpress/create-block@latest
 
 PATH: 
-  /Users/joshkennedy/.opam/default/bin:/Users/joshkennedy/.nvm/versions/node/v19.0.0/bin:/opt/local/bin:/opt/local/sbin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/joshkennedy/.opam/default/bin:/Users/joshkennedy/.nvm/versions/node/v19.0.0/bin:/opt/local/bin:/opt/local/sbin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/joshkennedy/.cargo/bin:/Applications/MacPorts/kitty.app/Contents/MacOS:/Users/joshkennedy/bin:/Users/joshkennedy/go/bin:/Users/joshkennedy/.composer/vendor/bin:/Users/joshkennedy/projects/my-local-cli/bin:/Users/joshkennedy/bin:/Users/joshkennedy/go/bin:/Users/joshkennedy/.composer/vendor/bin:/Users/joshkennedy/projects/my-local-cli/bin
+  /Users/joshkennedy/Library/Application Support/Herd/bin/:/Users/joshkennedy/.opam/default/bin:/Users/joshkennedy/.nvm/versions/node/v20.2.0/bin:/opt/local/bin:/opt/local/sbin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Users/joshkennedy/Library/pnpm:/Users/joshkennedy/Library/Application Support/Herd/bin/:/Users/joshkennedy/.opam/default/bin:/Users/joshkennedy/.nvm/versions/node/v20.2.0/bin:/opt/local/bin:/opt/local/sbin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/joshkennedy/.cargo/bin:/Applications/MacPorts/kitty.app/Contents/MacOS:/Users/joshkennedy/bin:/Users/joshkennedy/go/bin:/Users/joshkennedy/.composer/vendor/bin:/Users/joshkennedy/projects/my-local-cli/bin:/Users/joshkennedy/bin:/Users/joshkennedy/go/bin:/Users/joshkennedy/.composer/vendor/bin:/Users/joshkennedy/projects/my-local-cli/bin
 
 Yarn version: 
   1.22.19
 
 Node version: 
-  19.0.0
+  20.2.0
 
 Platform: 
   darwin arm64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/create-create-next-app: Not found
+  Error: https://registry.yarnpkg.com/@wordpress%2fcreate-create-block: Not found
       at params.callback [as _callback] (/opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:66145:18)
       at self.callback (/opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:140890:22)
-      at Request.emit (node:events:513:28)
+      at Request.emit (node:events:511:28)
       at Request.<anonymous> (/opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:141862:10)
-      at Request.emit (node:events:513:28)
+      at Request.emit (node:events:511:28)
       at IncomingMessage.<anonymous> (/opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:141784:12)
-      at Object.onceWrapper (node:events:627:28)
-      at IncomingMessage.emit (node:events:525:35)
-      at endReadableNT (node:internal/streams/readable:1359:12)
+      at Object.onceWrapper (node:events:625:28)
+      at IncomingMessage.emit (node:events:523:35)
+      at endReadableNT (node:internal/streams/readable:1367:12)
       at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
 
 npm manifest: 
@@ -39,7 +39,7 @@ npm manifest:
       "create-redwood-app": "^0.19.1",
       "create-svelte": "^3.3.0",
       "create-t3-app": "^6.10.2",
-      "create-vite": "^4.3.1",
+      "create-vite": "^5.2.2",
       "cwebp": "^2.0.3",
       "eslint": "^5.12.1",
       "expo-cli": "^3.13.1",
@@ -8436,10 +8436,10 @@ Lockfile:
       ora "6.1.2"
       sort-package-json "^2.0.0"
   
-  create-vite@^4.3.1:
-    version "4.3.1"
-    resolved "https://registry.yarnpkg.com/create-vite/-/create-vite-4.3.1.tgz#422666f64bfa32f77bcce0474861a6b147348b1f"
-    integrity sha512-bQ2dSjnk+aLNJKGMeec1bU5PB5YRmdpZ6HaqbmfOXiiyfh3TaiYPUIRX+pqCVaaR8J5Rgfv9bjjCXRzRzqmxNw==
+  create-vite@^5.2.2:
+    version "5.2.2"
+    resolved "https://registry.yarnpkg.com/create-vite/-/create-vite-5.2.2.tgz#9bb488f49a82ac8b1eaaad00d27ac34db76796e1"
+    integrity sha512-xywU1m7GyRt4PYvM3zzhCdNyM/iEsojtli1DdI56uTaQo5GZf5xPD+U7j9C2z/bgpPtrZJLRUAi2S1eAs31ELA==
   
   cross-fetch@2.2.2:
     version "2.2.2"

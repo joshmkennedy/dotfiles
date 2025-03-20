@@ -24,10 +24,14 @@ cmp.setup({
 	},
 	sources = {
 		{ name = "luasnip" }, -- For luasnip users.
+		-- {name="supermaven"},
 		{ name = "nvim_lsp" },
 		{ name = "path" },
 		{ name = "buffer" },
 	},
+
+	
+	preselect = cmp.PreselectMode.None,
 
 	formatting = {
 		format = lspkind.cmp_format({

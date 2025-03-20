@@ -8366,10 +8366,10 @@ create-t3-app@^6.10.2:
     ora "6.1.2"
     sort-package-json "^2.0.0"
 
-create-vite@^4.4.1:
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/create-vite/-/create-vite-4.4.1.tgz#7d29a6ec53491914d3b176a7facfecba1b2659fd"
-  integrity sha512-VbE5lc4aO7gterlwTDPxfnEhp/e0xAJui7NydmQiLpKq2yBLTQGcfMXeZeyoIH+E/Di2MQpE4o0K3lZNjlFL+A==
+create-vite@^5.2.2:
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/create-vite/-/create-vite-5.2.2.tgz#9bb488f49a82ac8b1eaaad00d27ac34db76796e1"
+  integrity sha512-xywU1m7GyRt4PYvM3zzhCdNyM/iEsojtli1DdI56uTaQo5GZf5xPD+U7j9C2z/bgpPtrZJLRUAi2S1eAs31ELA==
 
 cross-fetch@2.2.2:
   version "2.2.2"

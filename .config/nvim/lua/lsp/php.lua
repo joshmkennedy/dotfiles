@@ -1,7 +1,11 @@
+local on_attach = require("lsp.attached")
 return {
+	on_attach = on_attach,
+	filetypes = { "php", "blade" },
 	settings = {
 		intelephense = {
 			stubs = { "bcmath",
+				"/Users/joshkennedy/dotfiles/.config/php-stubs",
 				"bz2",
 				"calendar",
 				"Core",
@@ -54,11 +58,11 @@ return {
 				"yaml",
 				"zip",
 				"zlib",
-				"wordpress",
+				"wordpress", --using custom stubs more up to date
 				"woocommerce",
 				"acf-pro",
 				"acf-stubs",
-				"wordpress-globals",
+				"wordpress-globals", -- using custom stubs more up to date
 				"wp-cli",
 				"genesis",
 				"polylang",
@@ -69,7 +73,7 @@ return {
 			},
 			diagnostics = { enable = true },
 			files = {
-				maxSize = 10000000;
+				maxSize = 10000000,
 			},
 		},
 	}

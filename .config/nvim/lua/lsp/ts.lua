@@ -1,12 +1,37 @@
 local on_attach = require("lsp.attached")
 return {
 	filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact' },
-	init_options = {
-		hostInfo = "neovim",
-		logVerbosity = "verbose",
-	},
 	on_attach = function(client)
 		client.server_capabilities.document_formatting = true
 		on_attach(client)
-	end
+	end,
+	completions = {
+		completeFunctionCalls = true,
+	},
+	settings = {
+		javascript = {
+			inlayHints = {
+				includeInlayEnumMemberValueHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayVariableTypeHints = false,
+			},
+		},
+
+		typescript = {
+			inlayHints = {
+				includeInlayEnumMemberValueHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayVariableTypeHints = false,
+			},
+		},
+	},
+
 }

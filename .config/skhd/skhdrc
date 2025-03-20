@@ -6,7 +6,6 @@
 # alt - 5 : yabai -m space --focus 5
 # alt - 6 : yabai -m space --focus 6
 
-# alt - p : overlay --toggle
 alt - 6 : open /Applications/Asana.app
 alt - 7 : open /Applications/Figma.app
 alt - 3 : open /Applications/Arc.app
@@ -18,8 +17,14 @@ alt - 1 : open /Applications/Obsidian.app
 alt - 0 : yabai -m space --layout \
 $( [[ $( yabai -m query --spaces | jq '.[] | select(.["has-focus"]==true) | .type | test("bsp")') == "true"  ]] && echo "stack" || echo "bsp" )
 
+alt - tab : yabai -m display --focus recent
 
 ctrl + cmd - left : yabai -m space --rotate 90
 
 shift + ctrl + cmd - right : yabai -m window --space next
 shift + ctrl + cmd - left : yabai -m window --space prev
+
+alt - h : yabai -m window --focus west
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt - l : yabai -m window --focus east
