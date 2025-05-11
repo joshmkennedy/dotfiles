@@ -7,6 +7,13 @@ require("neo-tree").setup({
 							require("neo-tree").close_all()
 						end,
 					},
+					{
+						event ="file_open_requested",
+						handler = function()
+							--auto close
+							require("neo-tree").close_all()
+						end,
+					},
 				},
 				close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
 				popup_border_style = "rounded",

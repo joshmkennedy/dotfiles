@@ -1,7 +1,14 @@
 require("supermaven-nvim").setup({
-	keymaps={
+	keymaps = {
 		accept_suggestion = "<C-h>"
 	},
+	ignore_filetypes = {
+		TelescopePrompt = true,
+		["neo-tree"] = true,
+		none = true,
+	},
+
+
 	color = {
 		suggestion_color = "#5D769C",
 		cterm = 244,

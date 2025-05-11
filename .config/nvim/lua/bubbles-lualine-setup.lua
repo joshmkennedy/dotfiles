@@ -1,5 +1,3 @@
-local harpoon_list = require("harpoon-list-statusline")
--- Bubbles config for lualine
 -- Author: lokesh-krishna
 -- MIT license, see LICENSE for more details.
 
@@ -36,6 +34,7 @@ require('lualine').setup {
 	options = {
 		component_separators = '»',
 		section_separators = { left = '', right = '' },
+		always_show_tabline = false,
 	},
 	sections = {
 		lualine_a = { {
@@ -77,9 +76,9 @@ require('lualine').setup {
 			},
 		},
 		lualine_x = {
-			'%=',
-			{ harpoon_list.component },
-			'%=',
+			-- '%=',
+			-- { harpoon_list.component },
+			-- '%=',
 		},
 		lualine_y = { 'filetype', 'progress' },
 		lualine_z = {
@@ -94,6 +93,13 @@ require('lualine').setup {
 		lualine_y = {},
 		lualine_z = { 'location' },
 	},
-	tabline = {},
+	tabline = {
+		lualine_a = {
+			{
+				'tabs',
+				mode = 1,
+			},
+		},
+	},
 	extensions = {},
 }

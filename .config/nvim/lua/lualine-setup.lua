@@ -103,7 +103,7 @@ require("lualine").setup({
 				'mode',
 				fmt = function(str)
 					if (str == "NORMAL") then
-						return "󱣱"
+						return ""
 					end
 					if (str == "INSERT") then
 						return ""
@@ -112,7 +112,7 @@ require("lualine").setup({
 						return "󰘳"
 					end
 					if (str == "V-LINE") then
-						return "󰈈"
+						return "󰈈-"
 					end
 					if (str == "VISUAL") then
 						return "󰛐"
@@ -183,7 +183,9 @@ require("lualine").setup({
 		lualine_y = {},
 		lualine_z = {},
 	},
-	tabline = {},
+	tabline = {
+
+	},
 	extensions = {},
 	winbar = {
 		lualine_a = {

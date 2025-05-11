@@ -1,3 +1,40 @@
-one               = 1
-two-two           = 2
-three-three-three = 3
+Error executing vim.schedule lua callback: vim/_editor.lua:0: nvim_exec2()[1]..BufReadPost Autocommands for "*": Vim(append):Error executing
+lua callback: ...rew/Cellar/neovim/0.11.1/share/nvim/runtime/filetype.lua:36: nvim_exec2()[1]..BufReadPost Autocommands for "*"..FileType Aut
+ocommands for "*": Vim(append):Error executing lua callback: .../Cellar/neovim/0.11.1/share/nvim/runtime/lua/vim/uri.lua:104: attempt to inde
+x local 'uri' (a nil value)
+stack traceback:
+        .../Cellar/neovim/0.11.1/share/nvim/runtime/lua/vim/uri.lua:104: in function 'uri_to_fname'
+        .../neovim/0.11.1/share/nvim/runtime/lua/vim/lsp/client.lua:509: in function 'initialize'
+        .../Cellar/neovim/0.11.1/share/nvim/runtime/lua/vim/lsp.lua:270: in function 'create_and_init_client'
+        .../Cellar/neovim/0.11.1/share/nvim/runtime/lua/vim/lsp.lua:660: in function 'start_config'
+        .../Cellar/neovim/0.11.1/share/nvim/runtime/lua/vim/lsp.lua:517: in function 'lsp_enable_callback'
+        .../Cellar/neovim/0.11.1/share/nvim/runtime/lua/vim/lsp.lua:561: in function <.../Cellar/neovim/0.11.1/share/nvim/runtime/lua/vim/lsp
+.lua:560>
+        [C]: in function 'nvim_cmd'
+        ...rew/Cellar/neovim/0.11.1/share/nvim/runtime/filetype.lua:36: in function <...rew/Cellar/neovim/0.11.1/share/nvim/runtime/filetype.
+lua:35>
+        [C]: in function 'pcall'
+        vim/shared.lua: in function <vim/shared.lua:0>
+        [C]: in function '_with'
+        ...rew/Cellar/neovim/0.11.1/share/nvim/runtime/filetype.lua:35: in function <...rew/Cellar/neovim/0.11.1/share/nvim/runtime/filetype.
+lua:10>
+        [C]: in function 'nvim_exec2'
+        vim/_editor.lua: in function 'cmd'
+        ...k/packer/start/snacks.nvim/lua/snacks/picker/actions.lua:115: in function 'jump'
+        ...k/packer/start/snacks.nvim/lua/snacks/picker/actions.lua:36: in function <...k/packer/start/snacks.nvim/lua/snacks/picker/actions.
+lua:35>
+stack traceback:
+        [C]: in function '_with'
+        ...rew/Cellar/neovim/0.11.1/share/nvim/runtime/filetype.lua:35: in function <...rew/Cellar/neovim/0.11.1/share/nvim/runtime/filetype.
+lua:10>
+        [C]: in function 'nvim_exec2'
+        vim/_editor.lua: in function 'cmd'
+        ...k/packer/start/snacks.nvim/lua/snacks/picker/actions.lua:115: in function 'jump'
+        ...k/packer/start/snacks.nvim/lua/snacks/picker/actions.lua:36: in function <...k/packer/start/snacks.nvim/lua/snacks/picker/actions.
+lua:35>
+stack traceback:
+        [C]: in function 'nvim_exec2'
+        vim/_editor.lua: in function 'cmd'
+        ...k/packer/start/snacks.nvim/lua/snacks/picker/actions.lua:115: in function 'jump'
+        ...k/packer/start/snacks.nvim/lua/snacks/picker/actions.lua:36: in function <...k/packer/start/snacks.nvim/lua/snacks/picker/actions.
+lua:35>

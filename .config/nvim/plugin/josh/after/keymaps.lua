@@ -20,12 +20,7 @@ map("n", "<leader>O", "O<esc>", { noremap = true })
 
 --
 -- FUZZY FIND
---map("n", "<leader>ff", ":Telescope find_files prompt_prefix=🔍<CR>", { noremap = true })
--- map("n", "<leader>gg", ":Telescope live_grep prompt_prefix=🦖<CR>", { noremap = true })
 map("n", "<leader>hh", ":Telescope harpoon marks<CR>", { noremap = true })
-map("n", "<leader>tt", ":Telescope resume<CR>", { noremap = true })
--- keymap to open Telescope builtins
-map("n", "<leader>T", ":Telescope builtin prompt_prefix=🔍<CR>", { noremap = true })
 
 -- FILES
 map("n", "<leader>ff", function()
@@ -38,6 +33,14 @@ end, { noremap = true })
 -- ICONS
 map("n", "<leader>fi", function()
 	Snacks.picker.icons()
+end, { noremap = true })
+-- RESUME
+map("n", "<leader>tt", function()
+	Snacks.picker.resume()
+end, { noremap = true })
+-- Pick a PICKER
+map("n", "<leader>T", function()
+	Snacks.picker.pickers()
 end, { noremap = true })
 
 --" Highlights a function

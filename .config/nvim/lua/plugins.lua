@@ -28,11 +28,12 @@ return require("packer").startup(function(use)
 	use("nvim-lua/popup.nvim")
 	use("nvim-lua/plenary.nvim")
 
-	use("glepnir/dashboard-nvim")
+	-- use("glepnir/dashboard-nvim")
 	use({ "lukas-reineke/indent-blankline.nvim", disable = false })
 	use({ "gh-liu/fold_line.nvim" })
 
 	use("numToStr/Comment.nvim") -- [ ]
+	use({ 'JoosepAlviste/nvim-ts-context-commentstring' })
 	use("Vonr/align.nvim")
 
 	use("nvim-lualine/lualine.nvim")
@@ -172,6 +173,14 @@ return require("packer").startup(function(use)
 			'nvim-neotest/nvim-nio'
 		}
 	})
+
+	-- use { "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } }
+	-- use {
+	-- 	"microsoft/vscode-js-debug",
+	-- 	opt = true,
+	-- 	run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
+	-- }
+
 	use("theHamsta/nvim-dap-virtual-text")
 	use("nvim-telescope/telescope-dap.nvim")
 

@@ -2,7 +2,7 @@ require("plugins")
 require("utils")
 --require("lualine-setup")
 require("bubbles-lualine-setup")
-require("mason-setup")
+-- require("mason-setup")
 require("lint-setup")
 require("treesitter-setup")
 require("cmp-setup")
@@ -34,3 +34,5 @@ require("conform-setup")
 require'navbuddy-setup'
 
 require "snacks-setup"
+
+require("icons-setup")
