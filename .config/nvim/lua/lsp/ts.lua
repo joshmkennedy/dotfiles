@@ -1,4 +1,5 @@
-local on_attach = require("lsp.attached")
+local on_attach = require("lsp.attach")
+
 return {
 	filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact' },
 	on_attach = function(client)
@@ -33,5 +34,4 @@ return {
 			},
 		},
 	},
-
 }
