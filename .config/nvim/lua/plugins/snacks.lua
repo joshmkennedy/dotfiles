@@ -26,7 +26,7 @@ return {
 		scope = { enabled = true },
 		scroll = { enabled = false },
 		statuscolumn = {
-			enabled = true,
+			enabled = false,
 			left = { "mark", "sign" }, -- priority of signs on the left (high to low)
 			right = { "fold", "git" }, -- priority of signs on the right (high to low)
 			folds = {

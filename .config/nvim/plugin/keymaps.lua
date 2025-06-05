@@ -25,3 +25,5 @@ map("n", "<leader>xx", ":!chmod +x %<CR>", { noremap = true })
 map("t", "<esc>", "<C-\\><C-n>", {})
 map("t", "<C-h>", "<C-\\><C-n><c-w>h", {})
 map("t", "<C-l>", "<C-\\><C-n><c-w>l", {})
+
+

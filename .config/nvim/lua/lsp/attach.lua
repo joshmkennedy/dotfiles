@@ -1,5 +1,6 @@
 --local navbuddy = require("nvim-navbuddy")
 return function(client, bufnr)
+	print("Attaching LSP")
 	local buf_map = vim.api.nvim_buf_set_keymap
 	vim.cmd("command! LspDef lua vim.lsp.buf.definition()")
 	vim.cmd("command! LspFormatting lua vim.lsp.buf.formatting()")
@@ -45,7 +46,6 @@ return function(client, bufnr)
 				vim.lsp.inlay_hint.enable(true)
 			end
 		else
-			P("inlay_hint not available")
 		end
 	end, { nargs = 0 })
 

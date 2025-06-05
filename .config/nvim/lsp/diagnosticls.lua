@@ -1,18 +1,33 @@
+
 return {
 	on_attach = require("lsp.attach"),
   cmd = { 'diagnostic-languageserver', '--stdio' },
   root_markers = { '.git' },
   -- Empty by default, override to add filetypes.
-	filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'svelte', 'css', 'less', 'scss', 'markdown', 'pandoc', 'html.twig' },
+	filetypes = {
+		'javascript',
+		'javascriptreact',
+		'json',
+		'typescript',
+		'typescriptreact',
+		'svelte',
+		'css',
+		'less',
+		'scss',
+		'markdown',
+		'pandoc',
+		'html.twig',
+		'jsonc',
+	},
 
 	init_options = {
 		linters = {
 			eslint = {
-				command = 'eslint_d',
+				command = 'eslint',
 				rootPatterns = { '.git' },
 				debounce = 100,
 				args = { '--stdin', '--stdin-filename', '%filepath', '--format', 'json' },
-				sourceName = 'eslint_d',
+				sourceName = 'eslint',
 				parseJson = {
 					errorsRoot = '[0].messages',
 					line = 'line',
@@ -54,6 +69,7 @@ return {
 			scss = 'prettier',
 			less = 'prettier',
 			typescript = 'prettier',
+			jsonc = 'prettier',
 			typescriptreact = 'prettier',
 			json = 'prettier',
 			markdown = 'prettier',

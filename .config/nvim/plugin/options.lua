@@ -57,7 +57,7 @@ vim.opt.mat=2 -- how many tenths of a second to blink
 vim.opt.updatetime=300
 vim.opt.signcolumn="yes"
 vim.opt.shortmess:remove("S") -- Show [X/X] search results
-vim.opt.ttimeoutlen=300
+vim.opt.ttimeoutlen=500
 
 -- Tab control
 vim.opt.smarttab = true  -- tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
@@ -82,7 +82,6 @@ vim.opt.splitkeep = "screen"
 vim.opt.autoread=true -- detect when a file is changed
 
 -- WARNING: These settings disable vim's backups (swap files).
--- adfasd
 -- If this is not desired, comment these lines out.
 -- vim.opt.backup = true -- don't use backup files
 -- vim.opt.nowritebackup = true -- don't backup the file while editing

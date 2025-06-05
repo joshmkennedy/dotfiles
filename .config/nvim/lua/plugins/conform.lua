@@ -9,6 +9,19 @@ return {
 		formatters_by_ft = {
 			blade = { "blade-formatter" },
 			-- php = {"pretty-php"}
+			ocaml = { "ocamlformat" },
+		},
+		formatters = {
+			ocamlformat = {
+				prepend_args = {
+					"--if-then-else",
+					"vertical",
+					"--break-cases",
+					"fit-or-vertical",
+					"--type-decl",
+					"sparse",
+				},
+			},
 		},
 	},
 	config = function()

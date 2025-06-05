@@ -14,7 +14,7 @@ return {
 			textobjects = { enable = true },
 			indentation = {
 				enable = true,
-				disable = { "php", }
+				-- disable = { "php", }
 			},
 		}
 	end,
