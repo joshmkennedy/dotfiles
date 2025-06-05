@@ -11,24 +11,21 @@
 # see this wiki page for information:
 #  - https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)
 #
- sudo yabai --load-sa -V
  yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+ sudo yabai --load-sa -V
 
 # global settings
 yabai -m config mouse_follows_focus					 off 
 yabai -m config focus_follows_mouse          off
 yabai -m config window_placement             first_child
-yabai -m config window_topmost               off
 yabai -m config window_shadow                off
-yabai -m config window_opacity               off
+yabai -m config window_opacity               on
 # yabai -m config window_opacity_duration      0.0
 yabai -m config active_window_opacity        1.0
-yabai -m config normal_window_opacity        1.0
-yabai -m config window_border                off
-yabai -m config window_border_width          1
-yabai -m config active_window_border_color   0xff9A86BE
-yabai -m config normal_window_border_color   0xff555555
-yabai -m config insert_feedback_color        0xffd75f5f
+yabai -m config normal_window_opacity       1.0 
+
+
+yabai -m config insert_feedback_color        0xffD5A66A
 yabai -m config split_ratio                  0.50
 yabai -m config auto_balance                 on
 yabai -m config mouse_modifier               fn
@@ -38,11 +35,12 @@ yabai -m config mouse_drop_action            swap
 
 # general space settings
 yabai -m config layout                       stack
-yabai -m config top_padding									 25 
+yabai -m config top_padding									 27 
 yabai -m config bottom_padding               0
 yabai -m config left_padding								 0
 yabai -m config right_padding                0
-yabai -m config window_gap                   0
+yabai -m config window_gap                   5
+yabai -m config window_animation_duration    0.2 
 
 echo "yabai configuration loaded from here 💀"
 

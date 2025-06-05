@@ -1,0 +1,7 @@
+#! /usr/bin/env bash
+
+tmux run-shell "~/dotfiles/.bin/.tmux-layout/save-tmux-layout" C-m;
+
+tmux neww "nvim .tmux-layout";
+
+

@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
-
+    "tmux-layout.com/pkg/tmuxlayout"
 	"github.com/BurntSushi/toml"
 )
 
@@ -41,11 +41,11 @@ func main() {
 
 	fmt.Printf("%+v\n", config)
 	// 4. execute program and create windows and panels
-	TmuxLayout(config)
+	tmuxlayout.TmuxLayout(config)
 }
 
-func parseConfig(contents []byte) *Config {
-	var config Config
+func parseConfig(contents []byte) *tmuxlayout.Config {
+	var config tmuxlayout.Config
 	_, err := toml.Decode(string(contents), &config)
 	if err != nil {
 		fmt.Println(err)
