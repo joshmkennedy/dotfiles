@@ -14,9 +14,9 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 
 sketchybar --bar \
 position=top \
-height=25 \
+height=27 \
 blur_radius=30 \
-color=0x11ffffff \
+color=0x33705BFC \
 corner_radius=0 \
 margin=0 \
 y_offset=0 \
@@ -55,9 +55,9 @@ do
   space=(
     space="$sid"
     icon="${SPACE_ICONS[i]}"
-    icon.padding_left=4
-    icon.padding_right=4
-    background.color=0x40ffffff
+    icon.padding_left=7
+    icon.padding_right=7
+    background.color=0xccFDA707
     background.corner_radius=5
     background.height=18
     label.drawing=off
@@ -71,10 +71,15 @@ done
 # We add some regular items to the left side of the bar, where
 # only the properties deviating from the current defaults need to be set
 
-sketchybar --add item chevron left \
-           --set chevron icon= label.drawing=off \
-           --add item front_app left \
+sketchybar --add item chevron left --set chevron label="" \
+					 --set chevron icon.drawing=off \
+					 --add item front_app left \
            --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
+					 --set front_app background.color=0xff1A1132 \
+					 --set front_app label.color=0xffFFD17C \
+					 --set front_app background.corner_radius=5 \
+					 --set front_app label.padding_left=14 \
+					 --set front_app label.padding_right=14 \
            --subscribe front_app front_app_switched
 
 ##### Adding Right Items #####
@@ -88,14 +93,50 @@ sketchybar --add item chevron left \
 # volume is registered. More info about the event system can be found here:
 # https://felixkratz.github.io/SketchyBar/config/events
 
-sketchybar --add item clock right \
+sketchybar --add item mtntime right \
+           --set mtntime update_freq=10 script="$PLUGIN_DIR/mtn-clock.sh" \
+					 --set mtntime label.color=0x77ffffff \
+					 --set mtntime icon.drawing=off \
+					 --set mtntime background.padding_right=-10 \
+					 --set mtntime background.padding_left=-5 \
+					 --set mtntime background.color=0xff100A1F \
+					 --set mtntime background.corner_radius=5 \
+					 --set mtntime label.padding_left=7 \
+					 --set mtntime label.padding_right=7 \
+					 \
+					 --add item clock right \
            --set clock update_freq=10 icon=  script="$PLUGIN_DIR/clock.sh" \
+					 --set clock background.color=0xff100A1F \
+					 --set clock background.padding_right=0 \
+					 --set clock label.padding_right=7 \
+					 --set clock icon.padding_left=7 \
+					 --set clock background.corner_radius=5 \
+					 --set clock icon.color=0xff992345 \
+					 --set clock background.padding_left=7 \
+					 \
            --add item volume right \
            --set volume script="$PLUGIN_DIR/volume.sh" \
            --subscribe volume volume_change \
+					 --set volume background.color=0xff100A1F \
+					 --set volume icon.padding_left=7 \
+					 --set volume icon.color=0xff3567DE \
+					 --set volume label.padding_right=7 \
+					 --set volume background.corner_radius=5 \
+					 --set volume background.padding_left=7 \
+					 \
            --add item battery right \
            --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
-           --subscribe battery system_woke power_source_change
+					 --set battery background.color=0xff100A1F \
+					 --set battery icon.padding_left=7 \
+					 --set battery icon.color=0xffAF30AC \
+					 --set battery label.padding_right=7 \
+					 --set battery background.corner_radius=5 \
+					 \
+           --subscribe battery system_woke power_source_change \
+
+
+sketchybar --add item jira right --set jira script="$PLUGIN_DIR/current-jira-task.sh" --set jira update_freq=300 --set jira --set jira click_script="$PLUGIN_DIR/events/current-jira-task--clicked.sh"
+
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update

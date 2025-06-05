@@ -1,0 +1,20 @@
+GOOSE_MODEL: o3-mini
+OLLAMA_HOST: localhost
+OPENAI_HOST: https://api.openai.com
+GOOSE_PROVIDER: openai
+OPENAI_BASE_PATH: v1/chat/completions
+extensions:
+  computercontroller:
+    bundled: true
+    display_name: Computer Controller
+    enabled: true
+    name: computercontroller
+    timeout: 300
+    type: builtin
+  developer:
+    bundled: true
+    display_name: Developer
+    enabled: true
+    name: developer
+    timeout: 300
+    type: builtin

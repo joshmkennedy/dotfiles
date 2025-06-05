@@ -1,0 +1,45 @@
+##
+# THEME
+##
+theme = tokyonight_moon
+
+##
+# FONT
+##
+font-family = JetBrains Mono
+font-size = 16
+adjust-cell-height = 1
+font-thicken = 0
+bold-is-bright = true
+
+##
+# WINDOW
+##
+# title = "yo mom"
+window-decoration = auto
+macos-titlebar-proxy-icon = hidden
+
+keybind=global:ctrl+g=toggle_quick_terminal
+
+shell-integration-features = no-title
+
+
+##
+# ICON
+##
+macos-icon=custom-style
+#options are: blueprint, chalkboard, microchip, glass, holographic, paper, retro, xray, or custom-style
+macos-icon-frame=aluminum
+#aluminum ,beige ,plastic ,chrome
+macos-icon-ghost-color=#CF0087
+macos-icon-screen-color=#054096,#002B5B,#001F3F
+
+##
+# MISC
+##
+desktop-notifications=true
+
+cursor-style=block
+
+
+keybind=ctrl+super=jump_to_prompt:1

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<XMLReg>
+  <Key Name="HKEY_CURRENT_USER">
+    <Key Name="SOFTWARE">
+      <Key Name="KINESIS">
+        <Value Name="HideAllNotifsOffice" Type="2">0</Value>
+        <Value Name="ShowAllNotifsOffice" Type="2">0</Value>
+      </Key>
+    </Key>
+  </Key>
+</XMLReg>
