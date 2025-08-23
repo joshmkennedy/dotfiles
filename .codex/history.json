@@ -1,0 +1,26 @@
+[
+  {
+    "command": "how can i stow ~/dotfiles/.codex/ to ~/.codex",
+    "timestamp": 1749823446762
+  },
+  {
+    "command": "will this make the .codex dir available at ~/.codex?",
+    "timestamp": 1749823504571
+  },
+  {
+    "command": "how to fix",
+    "timestamp": 1749823590367
+  },
+  {
+    "command": "❯ stow -d --target=$HOME .codex\nzsh: /opt/homebrew/bin/stow: bad interpreter: /usr/bin/perl5.30: no such file or directory\n\n",
+    "timestamp": 1749823595643
+  },
+  {
+    "command": "what does this project do?",
+    "timestamp": 1749824123864
+  },
+  {
+    "command": "what plugins am i using ",
+    "timestamp": 1754615572483
+  }
+]
