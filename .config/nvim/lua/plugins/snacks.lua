@@ -1,6 +1,6 @@
 return {
 	"folke/snacks.nvim",
-	priority = 10,
+	priority = 10000,
 	lazy = false,
 	---@type snacks.Config
 	opts = {
@@ -17,6 +17,9 @@ return {
 			on_close = function()
 				require "neo-tree".close_all()
 			end,
+			sources = {
+				-- custom sources
+			},
 		},
 		notifier = {
 			enabled = true,
@@ -30,8 +33,8 @@ return {
 			left = { "mark", "sign" }, -- priority of signs on the left (high to low)
 			right = { "fold", "git" }, -- priority of signs on the right (high to low)
 			folds = {
-				open = false,        -- show open fold icons
-				git_hl = false,      -- use Git Signs hl for fold icons
+				open = false,         -- show open fold icons
+				git_hl = false,       -- use Git Signs hl for fold icons
 			},
 			git = {
 				-- patterns to match Git signs
@@ -47,17 +50,24 @@ return {
 
 		-- FUZZY FIND
 		{ "<leader>ff", function()
+			-- Snacks.picker.files({
+			-- 	cwd = vim.fn.getcwd()
+			-- })
 			Snacks.picker.files({
-				cwd = vim.fn.getcwd()
+				cwd = vim.fn.getcwd(),
 			})
 		end },
 		-- GREP
-		{ "<leader>gg", function() Snacks.picker.grep() end },
+		{ "<leader>gg", function()
+			Snacks.picker.grep()
+		end },
 		-- ICONS
 		{ "<leader>fi", function() Snacks.picker.icons() end },
 		-- RESUME
 		{ "<leader>tt", function() Snacks.picker.resume() end },
 		-- Pick a PICKER
 		{ "<leader>T",  function() Snacks.picker.pickers() end },
+		-- Pick a workspace symbol
+		{ "<leader>fs", function() Snacks.picker.lsp_workspace_symbols() end },
 	}
 }

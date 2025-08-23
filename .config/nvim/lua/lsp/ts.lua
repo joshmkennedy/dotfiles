@@ -10,6 +10,8 @@ return {
 		completeFunctionCalls = true,
 	},
 	settings = {
+		completeFunctionCalls = true,
+		expose_as_code_action = "all",
 		javascript = {
 			inlayHints = {
 				includeInlayEnumMemberValueHints = true,

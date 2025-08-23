@@ -1,8 +1,8 @@
 {
 	"optOut": false,
-	"lastUpdateCheck": 1746022126878,
+	"lastUpdateCheck": 1754502880986,
 	"update": {
-		"latest": "6.7.0",
+		"latest": "6.13.0",
 		"current": "1.21.1",
 		"type": "major",
 		"name": "prisma"

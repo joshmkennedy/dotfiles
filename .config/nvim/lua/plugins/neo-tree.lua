@@ -13,6 +13,9 @@ return {
 	-- },
 	{
 		"nvim-neo-tree/neo-tree.nvim",
+		keys = {
+			{ "<leader>e", "<cmd>Neotree reveal float<cr>" },
+		},
 		branch = "v3.x",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -192,7 +195,7 @@ return {
 				-- see `:h neo-tree-custom-commands-global`
 				commands = {},
 				window = {
-					position = "right",
+					position = "",
 					width = 40,
 					mapping_options = {
 						noremap = true,
@@ -286,8 +289,8 @@ return {
 							".env*",
 						},
 						never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
-							--".DS_Store",
-							--"thumbs.db"
+							".DS_Store",
+							"thumbs.db"
 						},
 						never_show_by_pattern = { -- uses glob style patterns
 							--".null-ls_*",
@@ -299,7 +302,7 @@ return {
 						leave_dirs_open = false,         -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
 					},
 					group_empty_dirs = false,          -- when true, empty folders will be grouped together
-					hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
+					hijack_netrw_behavior = "open_current", -- netrw disabled, opening a directory opens neo-tree
 					-- in whatever position is specified in window.position
 					-- "open_current",  -- netrw disabled, opening a directory opens within the
 					-- window like netrw would, regardless of window.position
@@ -400,7 +403,6 @@ return {
 				},
 			})
 
-			vim.keymap.set("n", "<leader>e", "<Cmd>Neotree toggle<CR>")
 		end,
 	},
 }

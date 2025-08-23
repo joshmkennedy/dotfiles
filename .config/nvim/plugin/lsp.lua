@@ -23,4 +23,4 @@ vim.lsp.enable("tailwindcss")
 vim.lsp.enable("ocaml")
 --
 --
--- vim.lsp.enable("elixir-ls")
+vim.lsp.enable("elixir-ls")
