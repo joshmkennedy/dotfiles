@@ -4,6 +4,9 @@ return {
 	lazy = false,
 	---@type snacks.Config
 	opts = {
+		rename = {
+			enabled = true,
+		},
 		-- your configuration comes here
 		-- or leave it empty to use the default settings
 		-- refer to the configuration section below

@@ -1,7 +1,7 @@
 ##
 # THEME
 ##
-theme = tokyonight_moon
+theme = Rose Pine Moon
 
 ##
 # FONT
@@ -17,11 +17,12 @@ bold-is-bright = true
 ##
 # title = "yo mom"
 window-decoration = auto
-macos-titlebar-proxy-icon = hidden
+macos-titlebar-style = hidden
 
 keybind=global:ctrl+g=toggle_quick_terminal
 
-shell-integration-features = no-title
+title = "🌵"
+shell-integration-features = no-cursor
 
 
 ##
@@ -41,5 +42,15 @@ desktop-notifications=true
 
 cursor-style=block
 
+cursor-color=#EBBCBA
 
-keybind=ctrl+super=jump_to_prompt:1
+cursor-style-blink=false
+
+keybind = ctrl+super+j=jump_to_prompt:1
+
+background-opacity=0.95
+background-blur=20
+
+bell-features = system,audio
+bell-features = audio,system
+bell-audio-path = ~/.config/beep.mp3

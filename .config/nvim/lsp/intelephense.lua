@@ -5,6 +5,7 @@ return {
 	settings = {
 		intelephense = {
 			stubs = { "bcmath",
+				"random",
 				"/Users/joshkennedy/dotfiles/.config/php-stubs",
 				"bz2",
 				"calendar",

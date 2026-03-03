@@ -3,8 +3,7 @@ return function(client, bufnr)
 	print("Attaching LSP")
 	local buf_map = vim.api.nvim_buf_set_keymap
 	vim.cmd("command! LspDef lua vim.lsp.buf.definition()")
-	vim.cmd("command! LspFormatting lua vim.lsp.buf.formatting()")
-	vim.cmd("command! LspHover lua vim.lsp.buf.hover()")
+	vim.cmd("command! LspFormatting lua vim.lsp.buf.format()")
 	vim.cmd("command! LspOrganize lua lsp_organize_imports()")
 	vim.cmd("command! LspRefs lua vim.lsp.buf.references()")
 	vim.cmd("command! LspTypeDef lua vim.lsp.buf.type_definition()")
@@ -17,6 +16,16 @@ return function(client, bufnr)
 
 	vim.api.nvim_create_user_command("LspCodeAction", function()
 		vim.lsp.buf.code_action()
+	end, {
+		range = true,
+	})
+
+	vim.api.nvim_create_user_command("LspHover", function()
+		vim.lsp.buf.hover({
+			border = "rounded",
+			max_height = 20,
+			max_width = 130,
+		})
 	end, {
 		range = true,
 	})
@@ -34,16 +43,15 @@ return function(client, bufnr)
 	vim.keymap.set("n", "gn", ":LspRename<CR>", { silent = true })
 	vim.keymap.set("n", "gr", ":LspRefs<CR>", { silent = true })
 	vim.keymap.set("n", "<leader>gt", ":LspTypeDef<CR>", { silent = true })
-	vim.keymap.set("n", "K", ":LspHover<CR>", { silent = true })
+	vim.keymap.set("n", "K", ":LspHover<CR>", { silent = true, noremap = true })
 	--vim.keymap.set( "n", "gs", ":LspOrganize<CR>", {silent = true})
 	vim.keymap.set("n", "[a", ":LspDiagPrev<CR>", { silent = true })
 	vim.keymap.set("n", "]a", ":LspDiagNext<CR>", { silent = true })
-	vim.keymap.set("n", "ga", ":LspCodeAction<CR>", { silent = true })
+	vim.keymap.set({ "n", "x", "v" }, "ga", vim.lsp.buf.code_action, { buffer = bufnr })
 	vim.keymap.set("n", "<Leader>a", ":LspDiagLine<CR>", { silent = true })
 	vim.keymap.set("i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>", { silent = true })
 
 	vim.keymap.set("n", "<Leader>!", "<cmd>LspRestart<CR><cmd>e!<CR>", {})
-
 
 	vim.api.nvim_create_user_command("ToggleInlayHints", function()
 		if vim.lsp.inlay_hint then
@@ -55,6 +63,12 @@ return function(client, bufnr)
 		else
 		end
 	end, { nargs = 0 })
+
+
+	-- vim.keymap.set("n", "<leader>u", function() print(client.name) end, { silent = true })
+	if client.name == "typescript-tools" then
+		vim.keymap.set("n", "<leader><leader>a", require("nvim-pretty-ts-errors").show_line_diagnostics)
+	end
 
 	-- NAV BUDDY
 	-- if client.server_capabilities.documentSymbolProvider then

@@ -1,9 +1,8 @@
-
 return {
 	on_attach = require("lsp.attach"),
-  cmd = { 'diagnostic-languageserver', '--stdio' },
-  root_markers = { '.git' },
-  -- Empty by default, override to add filetypes.
+	cmd = { 'diagnostic-languageserver', '--stdio' },
+	root_markers = { '.git' },
+	-- Empty by default, override to add filetypes.
 	filetypes = {
 		'javascript',
 		'javascriptreact',
@@ -18,6 +17,7 @@ return {
 		'pandoc',
 		'html.twig',
 		'jsonc',
+		'vue',
 	},
 
 	init_options = {
@@ -45,10 +45,12 @@ return {
 		},
 		filetypes = {
 			javascript = 'eslint',
+			json = 'eslint',
 			javascriptreact = 'eslint',
 			typescript = 'eslint',
 			typescriptreact = 'eslint',
 			svelte = "eslint",
+			vue = "eslint",
 		},
 		formatters = {
 			eslint_d = {
@@ -58,7 +60,7 @@ return {
 			},
 			prettier = {
 				command = 'prettier',
-				args = { '--stdin-filepath', '%filename' },
+				args = { '--stdin-filepath', '%filename', "-c", ".prettierrc" },
 				rootPatterns = { '.git' },
 			},
 		},
@@ -75,6 +77,7 @@ return {
 			markdown = 'prettier',
 			svelte = 'prettier',
 			['html.twig'] = 'prettier',
+			vue = 'prettier',
 		}
 	}
 }

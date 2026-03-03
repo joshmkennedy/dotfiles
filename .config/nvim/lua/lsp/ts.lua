@@ -1,11 +1,13 @@
 local on_attach = require("lsp.attach")
 
 return {
-	filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact' },
-	on_attach = function(client)
+	filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact'},
+	on_attach = function(client, bufnr)
 		client.server_capabilities.document_formatting = true
-		on_attach(client)
+		
+		on_attach(client, bufnr)
 	end,
+	
 	completions = {
 		completeFunctionCalls = true,
 	},

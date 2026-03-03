@@ -12,6 +12,7 @@ xspace < x ; default
 default < alt - 1 : open /Applications/Obsidian.app
 default < alt - 2 : open /Applications/Ghostty.app
 default < alt - 3 : open /Applications/Arc.app
+
 # default < alt - 4 : open /Applications/Notion.app
 default < alt - 5 : open /Applications/slack.app
 default < alt - 6 : open /Applications/Asana.app

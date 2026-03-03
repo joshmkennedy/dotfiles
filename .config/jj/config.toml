@@ -1,0 +1,31 @@
+[user]
+name = "josh kennedy"
+email = "jkennedy@ksensetech.com"
+
+[ui]
+# Use the same pager as git
+pager = "delta --color-only"
+
+# Confirm before committing
+confirm = true
+
+[core]
+# Default branch for new repos
+default-branch = "main"
+
+[diff]
+# Color settings for diffs
+color = "always"
+
+[git]
+# Automatically import git configuration
+import = true
+
+[template]
+# Customize log output
+log = '''
+@++
+author.username ++ " "
+author.timestamp.local("--format=%Y-%m-%d %H:%M") ++ " "
+description.first_line()
+'''
