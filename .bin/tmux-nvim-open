@@ -1,0 +1,133 @@
+#!/usr/bin/env bash
+# Open a path in the most recently active tmux client's nvim pane.
+#
+# This intentionally targets a pane by process name rather than maintaining
+# persistent tmux or Neovim state. It is designed as a small, local prototype
+# for macOS file-open events, which do not inherit a TMUX environment.
+
+set -euo pipefail
+
+if [[ $# -ne 1 ]]; then
+  printf 'usage: %s <absolute-path-or-path:line[:column]>\n' "$0" >&2
+  exit 64
+fi
+
+input_path=$1
+line_number=
+column_number=
+
+# Ghostty normally hands the macOS file handler an absolute path. Accept the
+# common compiler form /path/to/file:line[:column] too, but only when the
+# complete argument does not itself name a file.
+if [[ ! -e "$input_path" && "$input_path" =~ ^(.*):([0-9]+)(:([0-9]+))?$ ]]; then
+  candidate_path=${BASH_REMATCH[1]}
+  if [[ -e "$candidate_path" ]]; then
+    input_path=$candidate_path
+    line_number=${BASH_REMATCH[2]}
+    column_number=${BASH_REMATCH[4]:-}
+  fi
+fi
+
+if [[ "$input_path" != /* ]]; then
+  printf 'tmux-nvim-open: expected an absolute path, got %s\n' "$input_path" >&2
+  exit 65
+fi
+
+tmux_binary=${TMUX_NVIM_TMUX_BINARY:-/opt/homebrew/bin/tmux}
+if [[ ! -x "$tmux_binary" ]]; then
+  printf 'tmux-nvim-open: tmux is unavailable at %s\n' "$tmux_binary" >&2
+  exit 69
+fi
+
+tmux_command=("$tmux_binary")
+if [[ -n ${TMUX_NVIM_TMUX_SOCKET:-} ]]; then
+  tmux_command+=(-L "$TMUX_NVIM_TMUX_SOCKET")
+fi
+
+tmux_run() {
+  "${tmux_command[@]}" "$@"
+}
+
+notify_failure() {
+  printf 'tmux-nvim-open: %s\n' "$1" >&2
+  /usr/bin/osascript -e "display notification \"$1\" with title \"Nvim Link\"" 2>/dev/null || true
+}
+
+focus_ghostty() {
+  /usr/bin/osascript -e 'tell application id "com.mitchellh.ghostty" to activate' 2>/dev/null || true
+}
+
+client_tty=${TMUX_NVIM_CLIENT_TTY:-}
+session_name=${TMUX_NVIM_SESSION:-}
+
+if [[ -z "$session_name" ]]; then
+  # A macOS file-open event has no TMUX variable. The most recently active
+  # client is the closest available definition of the current tmux session.
+  client_record=$(tmux_run list-clients -F '#{client_activity}|#{client_tty}|#{client_session}' 2>/dev/null \
+    | sort -rn \
+    | head -n 1 || true)
+
+  if [[ -z "$client_record" ]]; then
+    bootstrap_script="$HOME/.bin/tmux-nvim-bootstrap"
+    if [[ ! -x "$bootstrap_script" ]]; then
+      notify_failure 'No active tmux client is available, and the Ghostty bootstrap is missing.'
+      exit 1
+    fi
+
+    # Finder launches this helper outside tmux. Start a fresh Ghostty surface
+    # whose command creates/attaches the dedicated fallback session instead
+    # of failing just because no client exists yet.
+    encoded_path=$(printf %s "$input_path" | base64 | tr -d '\n')
+    if ! /usr/bin/open -na Ghostty.app --args -e "$bootstrap_script" "$encoded_path"; then
+      notify_failure 'Could not start Ghostty for the Nvim Link fallback.'
+      exit 1
+    fi
+    focus_ghostty
+    exit 0
+  fi
+
+  # tmux renders \t literally in formats, so use a delimiter it does not put
+  # in tty paths or session names instead of relying on a tab escape.
+  IFS='|' read -r _ client_tty session_name <<< "$client_record"
+fi
+
+if ! tmux_run has-session -t "$session_name" 2>/dev/null; then
+  notify_failure 'The tracked tmux session is no longer available.'
+  exit 1
+fi
+
+# list-panes -s limits the search to this session. The first nvim process is
+# deliberately sufficient for the prototype; tmux returns panes in window and
+# pane order, which gives this a stable result when multiple editors exist.
+target_pane=$(tmux_run list-panes -s -t "$session_name" -F '#{pane_id} #{pane_current_command}' \
+  | awk '$2 == "nvim" { print $1; exit }')
+
+if [[ -z "$target_pane" ]]; then
+  file_directory=$(dirname "$input_path")
+  target_pane=$(tmux_run new-window -d -P -F '#{pane_id}' -t "$session_name" -n nvim -c "$file_directory" nvim)
+fi
+
+target_window_index=$(tmux_run display-message -p -t "$target_pane" '#{window_index}')
+
+# Encode the path before placing it on Neovim's command line. This keeps
+# spaces, quotes, pipes, and shell-looking filenames as data, not commands.
+encoded_path=$(printf %s "$input_path" | base64 | tr -d '\n')
+open_command=":lua vim.cmd.edit(vim.fn.fnameescape(vim.base64.decode('${encoded_path}')))"
+
+if [[ -n "$line_number" ]]; then
+  cursor_column=${column_number:-1}
+  open_command+="; vim.api.nvim_win_set_cursor(0, {${line_number}, ${cursor_column} - 1})"
+fi
+
+tmux_run send-keys -t "$target_pane" Escape
+tmux_run send-keys -t "$target_pane" -l "$open_command"
+tmux_run send-keys -t "$target_pane" Enter
+
+# Select the target inside the session, then make the invoking client show it.
+# switch-client expects session:window rather than tmux's internal @window ID.
+tmux_run select-window -t "$session_name:$target_window_index"
+tmux_run select-pane -t "$target_pane"
+if [[ -n "$client_tty" ]]; then
+  tmux_run switch-client -c "$client_tty" -t "$session_name:$target_window_index"
+fi
+focus_ghostty

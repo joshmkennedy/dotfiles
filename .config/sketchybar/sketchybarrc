@@ -82,6 +82,23 @@ sketchybar --add item chevron left --set chevron label="" \
 					 --set front_app label.padding_right=14 \
            --subscribe front_app front_app_switched
 
+##### Adding Center Items #####
+
+sketchybar --add item capi_recording center \
+           --set capi_recording drawing=off \
+           --set capi_recording update_freq=1 \
+           --set capi_recording script="$PLUGIN_DIR/capi-recording.sh" \
+           --set capi_recording click_script="$PLUGIN_DIR/capi-recording.sh --stop" \
+           --set capi_recording background.color=0xff100A1F \
+           --set capi_recording background.corner_radius=5 \
+           --set capi_recording background.padding_left=7 \
+           --set capi_recording background.padding_right=7 \
+           --set capi_recording icon.color=0xff992345 \
+           --set capi_recording icon.padding_left=7 \
+           --set capi_recording icon.padding_right=5 \
+           --set capi_recording label.padding_left=3 \
+           --set capi_recording label.padding_right=7
+
 ##### Adding Right Items #####
 # In the same way as the left items we can add items to the right side.
 # Additional position (e.g. center) are available, see:

@@ -1,11 +1,84 @@
+# macOS and editor artifacts
+.DS_Store
+*.swp
+*.tmp
+*.bak
+*-old
+
+# Runtime state, caches, logs, and local storage
+/.cache/
+/tmp/
+**/cache/
+**/tmp/
+**/storage/
+*.log
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Generated dependencies and build output
 .sass-cache/
 *.css.map
 *.sass.map
 *.scss.map
 **/node_modules/**
 node_modules/**
+/.config/php-stubs/
+/.config/yarn/global/yarn.lock
+
+# Installed tools and third-party repositories
+/.bin/.tmux-layout/
+/.bin/leetcode/
+/.config/coc/
+/.config/dap-adapters/
+/.config/delve/
+/alfred/
+/forgit/
+
+# Codex: keep only portable, authored configuration visible to Git
+/.codex/*
+!/.codex/AGENTS.md
+!/.codex/config.toml
+!/.codex/hooks.json
+!/.codex/instructions.md
+!/.codex/keybindings.json
+!/.codex/rules/
+!/.codex/rules/**
+!/.codex/skills/
+!/.codex/skills/**
+/.codex/skills/.system/
+
+# Application-generated state
+/.alias_tracker
+/.config/configstore/
+/.config/gatsby/
+/.config/karabiner/automatic_backups/
+/.config/margins-config/
+/.config/raycast/
+/.config/nvim/.nvimlog
+/.config/sketchybar/plugins/cache/
+/.config/sketchybar/tmp.txt
+/.config/uv/
+/.config/vercel-plugin/
+/.config/yarn/global/yarn-error.log
+
+# Histories
+/.config/goose/history.txt
+/.config/psysh/psysh_history
+/.config/shforget/*.log
+/.config/shforget/storage/
+
+# Machine-local credentials and authentication state
+/.config/.bws-ctl
+/.config/bws/state/
+/.config/codeium/
+/.config/gh/
+/.config/github-copilot/
+/.config/glab-cli/config.yml
+/.config/glab-cli/recover/
+/.config/graphite/user_config
+/.config/kitty/.supermaven/
+/.config/sanity/config.json
+/.config/stripe/
 
 .config/nvim/plugin/nvim-whid
-
-.config/github-copilot/**
-.config/gh/**

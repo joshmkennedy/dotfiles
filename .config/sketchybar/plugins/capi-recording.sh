@@ -1,0 +1,1 @@
+/Users/joshkennedy/projects/capi-capture/apps/sketchybar/capi.sh

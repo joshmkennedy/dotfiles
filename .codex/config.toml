@@ -1,0 +1,298 @@
+model = "gpt-5.6-sol"
+model_reasoning_effort = "high"
+notify = ["/Users/joshkennedy/dotfiles/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
+approvals_reviewer = "user"
+
+[projects."/Users/joshkennedy/projects"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/projects/margins"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/dotfiles"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/work/aim/wp-content/themes/aim-theme"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/projects/forest-soccer-tourney"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/work/apsca_knack"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/projects/books/domain-driven-design"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/work/apsca-server"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/work/ksense_command_center"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/work/ksense-capacity-planner"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/work/apsca_next"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/projects/jira-scripts"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/work/aim/aim-sheets"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/work/aim/aim-chat-v2"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/projects/say-cmd"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/projects/color-codes"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/projects/capi-capture"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/projects/scratch-chat"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/projects/beats-mixer"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/work/dataknox"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/projects/prisma-viewer"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/projects/nodebug"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/projects/worldcup-2026"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/work/lm-inventory-sync-server"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/projects/next-sidecar"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/work/kevinmd/wp-content/plugins/mpt-ads"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/work/AiM-Apps"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/work/aim/wp-content/themes"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/projects/oracle-server"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/projects/local-blob"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/work/axiom-pest-control/form-collect-api"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/work/kevinmd/wp-content/themes/kmd-astra"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/projects/codex-tracker"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/projects/muilyze"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/projects/codex-diff"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/Documents/Codex/2026-07-11/let-s-review-all-tours-creation"]
+trust_level = "trusted"
+
+[projects."/private/tmp"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/Documents/agent-presents-code"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/Documents/Codex/2026-07-17/so"]
+trust_level = "trusted"
+
+[projects."/Users/joshkennedy/Documents/Codex/2026-07-17/i"]
+trust_level = "trusted"
+
+[tui]
+theme = "catppuccin-mocha"
+
+[tui.model_availability_nux]
+"gpt-5.5" = 4
+"gpt-5.6-sol" = 4
+
+[marketplaces.openai-bundled]
+last_updated = "2026-07-17T23:31:57Z"
+source_type = "local"
+source = "/Users/joshkennedy/dotfiles/.codex/.tmp/bundled-marketplaces/openai-bundled"
+
+[marketplaces.openai-primary-runtime]
+last_updated = "2026-07-16T08:23:51Z"
+source_type = "local"
+source = "/Users/joshkennedy/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
+[plugins."computer-use@openai-bundled"]
+enabled = true
+
+[plugins."template-creator@openai-primary-runtime"]
+enabled = true
+
+[plugins."sites@openai-bundled"]
+enabled = true
+
+[plugins."visualize@openai-bundled"]
+enabled = true
+
+[plugins."chrome@openai-bundled"]
+enabled = true
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[features]
+js_repl = false
+memories = true
+prevent_idle_sleep = true
+
+[mcp_servers.node_repl]
+args = []
+command = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl"
+startup_timeout_sec = 120
+
+[mcp_servers.node_repl.env]
+NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
+NODE_REPL_NODE_MODULE_DIRS = "/Applications/ChatGPT.app/Contents/Resources/cua_node/lib/node_modules"
+NODE_REPL_NODE_PATH = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node"
+NODE_REPL_TRUSTED_CODE_PATHS = "/Users/joshkennedy/.codex"
+CODEX_HOME = "/Users/joshkennedy/.codex"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "330cfa6875d3acd34ed3d321d03e97c0dd9ee3c1855467f2600215089f2d8279,6d25aa7656feac858f3a3bdaea5bcbab0dbfd426c9de8e6931ce90c399ee8e4f"
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
+NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
+NODE_REPL_INSTRUCTIONS_USE_CASE_COMPUTER_USE = "Control desktop apps on macOS through Computer Use."
+BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
+BROWSER_USE_CODEX_APP_VERSION = "26.715.31251"
+SKY_CUA_SERVICE_PATH = "/Users/joshkennedy/.codex/plugins/cache/openai-bundled/computer-use/1.0.1000451/Codex Computer Use.app"
+CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex"
+
+[mcp_servers.computer-use]
+command = "./Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient"
+args = ["mcp"]
+cwd = "."
+enabled = false
+
+[notice]
+hide_full_access_warning = true
+
+[desktop]
+followUpQueueMode = "queue"
+dock-icon-preference = "codex-system"
+conversationDetailMode = "STEPS_COMMANDS"
+git-create-pull-request-as-draft = false
+reviewDelivery = "detached"
+selected-avatar-id = "null-signal"
+avatar-overlay-mascot-width-px = 224
+dictationDictionary = []
+appearanceLightCodeThemeId = "catppuccin"
+appearanceDarkCodeThemeId = "tokyo-night"
+usePointerCursors = true
+appearanceDiffMarkerStyle = "color"
+keepRemoteControlAwakeWhilePluggedIn = true
+
+[desktop.open-in-target-preferences]
+global = "terminal"
+
+[desktop.open-in-target-preferences.perPath]
+"/Users/joshkennedy/work/apsca_next" = "terminal"
+
+
+log_user_prompt = false
+exporter = { otlp-http = { endpoint = "http://127.0.0.1:4318/v1/logs", protocol = "json" } }
+trace_exporter = "none"
+metrics_exporter = "none"
+
+[desktop.appearanceLightChromeTheme]
+accent = "#8839ef"
+contrast = 45
+ink = "#4c4f69"
+opaqueWindows = false
+surface = "#eff1f5"
+
+[desktop.appearanceLightChromeTheme.fonts]
+
+[desktop.appearanceLightChromeTheme.semanticColors]
+diffAdded = "#40a02b"
+diffRemoved = "#d20f39"
+skill = "#8839ef"
+
+[desktop.appearanceDarkChromeTheme]
+accent = "#3d59a1"
+contrast = 60
+ink = "#a9b1d6"
+opaqueWindows = false
+surface = "#1a1b26"
+
+[desktop.appearanceDarkChromeTheme.fonts]
+
+[desktop.appearanceDarkChromeTheme.semanticColors]
+diffAdded = "#449dab"
+diffRemoved = "#914c54"
+skill = "#9d7cd8"
+
+[hooks.state]
+
+[hooks.state."/Users/joshkennedy/.codex/hooks.json:session_start:0:0"]
+trusted_hash = "sha256:c529ae6513061ba494e32c8f2ddb7866031c0c6d501e68e2c61b75ad50d0467f"
+
+[hooks.state."/Users/joshkennedy/.codex/hooks.json:user_prompt_submit:0:0"]
+trusted_hash = "sha256:753e8d6a4d0edc3bf0aede2f68a43b75cc4368db42780fcb46d9a1584428a9b7"
+
+[hooks.state."/Users/joshkennedy/.codex/hooks.json:stop:0:0"]
+trusted_hash = "sha256:74bcd87f4e50f6118930f17dff3b2f4bd5da0ac6ab03cbcb5ce16b09a33d559f"
+
+
+log_user_prompt = false
+trace_exporter = "none"
+metrics_exporter = "none"
+
+[hooks.state."/Users/joshkennedy/.codex/hooks.json:stop:0:0".exporter ]
+
+[hooks.state."/Users/joshkennedy/.codex/hooks.json:stop:0:0".exporter.otlp-http]
+endpoint = "http://127.0.0.1:4318/v1/logs"
+protocol = "json"
+
+[otel]
+environment = "local"
+log_user_prompt = false
+exporter = { otlp-http = { endpoint = "http://127.0.0.1:4318/v1/logs", protocol = "json" } }
+trace_exporter = "none"
+metrics_exporter = "none"
+
+[shell_environment_policy.set]
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "330cfa6875d3acd34ed3d321d03e97c0dd9ee3c1855467f2600215089f2d8279,6d25aa7656feac858f3a3bdaea5bcbab0dbfd426c9de8e6931ce90c399ee8e4f"
+NODE_REPL_TRUSTED_CODE_PATHS = "/Users/joshkennedy/.codex"

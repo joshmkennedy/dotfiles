@@ -3,8 +3,8 @@ return function(client, bufnr)
 	print("Attaching LSP")
 	local buf_map = vim.api.nvim_buf_set_keymap
 	vim.cmd("command! LspDef lua vim.lsp.buf.definition()")
-	vim.cmd("command! LspFormatting lua vim.lsp.buf.format()")
-	vim.cmd("command! LspOrganize lua lsp_organize_imports()")
+	vim.cmd("command! LspFormatting lua require('conform').format({ async = true, lsp_format = 'never' })")
+	vim.cmd("command! LspOrganize lua require('lsp.typescript').source_action('source.organizeImports')")
 	vim.cmd("command! LspRefs lua vim.lsp.buf.references()")
 	vim.cmd("command! LspTypeDef lua vim.lsp.buf.type_definition()")
 	vim.cmd("command! LspImplementation lua vim.lsp.buf.implementation()")
@@ -66,7 +66,7 @@ return function(client, bufnr)
 
 
 	-- vim.keymap.set("n", "<leader>u", function() print(client.name) end, { silent = true })
-	if client.name == "typescript-tools" then
+	if client.name == "typescript-tools" or client.name == "typescript7" then
 		vim.keymap.set("n", "<leader><leader>a", require("nvim-pretty-ts-errors").show_line_diagnostics)
 	end
 

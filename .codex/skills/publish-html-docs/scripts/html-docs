@@ -1,0 +1,68 @@
+#!/bin/sh
+set -eu
+
+HOST="${HTML_DOCS_SSH_HOST:-opc@143.47.117.129}"
+KEY="${HTML_DOCS_SSH_KEY:-$HOME/.ssh/oracle2}"
+PUBLIC_URL="${HTML_DOCS_PUBLIC_URL:-https://docs.play-onitama.com}"
+REMOTE_COMMAND="${HTML_DOCS_REMOTE_COMMAND:-/home/opc/.local/bin/html-docs-admin}"
+
+usage() {
+  cat <<'EOF'
+Usage:
+  html-docs publish FILE [SLUG]  Upload a new document or replace one
+  html-docs update FILE [SLUG]   Replace an existing document
+  html-docs remove SLUG          Remove a document
+  html-docs list [--json]        List published documents
+  html-docs search QUERY [--json] Search titles, slugs, and document text
+  html-docs get SLUG [OUTPUT]    Download a document (stdout by default)
+  html-docs url SLUG             Print a public URL
+EOF
+}
+
+ssh_run() {
+  ssh -i "$KEY" -o BatchMode=yes "$HOST" "$@"
+}
+
+normalize_slug() {
+  printf '%s' "$1" | sed -E 's/\.html$//' | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-+//; s/-+$//'
+}
+
+command=${1:-}
+case "$command" in
+  publish|update)
+    file=${2:-}
+    [ -n "$file" ] && [ -f "$file" ] || { echo "error: HTML file not found: $file" >&2; exit 1; }
+    derived_slug=$(basename "$file" .html)
+    slug=$(normalize_slug "${3:-$derived_slug}")
+    [ -n "$slug" ] || { echo "error: invalid slug" >&2; exit 1; }
+    remote_command=$command
+    [ "$command" = "publish" ] && remote_command=put
+    ssh_run "$REMOTE_COMMAND" "$remote_command" "$slug" < "$file"
+    ;;
+  remove)
+    [ -n "${2:-}" ] || { usage >&2; exit 1; }
+    slug=$(normalize_slug "$2")
+    [ -n "$slug" ] || { echo "error: invalid slug" >&2; exit 1; }
+    ssh_run "$REMOTE_COMMAND" remove "$slug"
+    ;;
+  list)
+    if [ "${2:-}" = "--json" ]; then ssh_run "$REMOTE_COMMAND" list --json; else ssh_run "$REMOTE_COMMAND" list; fi
+    ;;
+  search)
+    [ -n "${2:-}" ] || { usage >&2; exit 1; }
+    query=$(printf '%s' "$2" | base64 | tr -d '\n')
+    if [ "${3:-}" = "--json" ]; then ssh_run "$REMOTE_COMMAND" search "$query" --base64 --json; else ssh_run "$REMOTE_COMMAND" search "$query" --base64; fi
+    ;;
+  get)
+    [ -n "${2:-}" ] || { usage >&2; exit 1; }
+    slug=$(normalize_slug "$2")
+    if [ -n "${3:-}" ]; then curl -fsSL "$PUBLIC_URL/$slug" -o "$3"; echo "$3"; else curl -fsSL "$PUBLIC_URL/$slug"; fi
+    ;;
+  url)
+    [ -n "${2:-}" ] || { usage >&2; exit 1; }
+    slug=$(normalize_slug "$2")
+    printf '%s/%s\n' "${PUBLIC_URL%/}" "$slug"
+    ;;
+  -h|--help|help|"") usage ;;
+  *) echo "error: unknown command: $command" >&2; usage >&2; exit 1 ;;
+esac

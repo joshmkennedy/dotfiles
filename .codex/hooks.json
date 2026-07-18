@@ -1,0 +1,37 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'/Users/joshkennedy/projects/codex-tracker/bin/codex-tracker.js' hook SessionStart",
+            "timeout": 2
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'/Users/joshkennedy/projects/codex-tracker/bin/codex-tracker.js' hook UserPromptSubmit",
+            "timeout": 2
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'/Users/joshkennedy/projects/codex-tracker/bin/codex-tracker.js' hook Stop",
+            "timeout": 2
+          }
+        ]
+      }
+    ]
+  }
+}

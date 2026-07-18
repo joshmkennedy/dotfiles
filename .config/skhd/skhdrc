@@ -13,48 +13,41 @@ default < alt - 1 : open /Applications/Obsidian.app
 default < alt - 2 : open /Applications/Ghostty.app
 default < alt - 3 : open /Applications/Arc.app
 
-# default < alt - 4 : open /Applications/Notion.app
+default < alt - 4 : open -b com.openai.codex
 default < alt - 5 : open /Applications/slack.app
 default < alt - 6 : open /Applications/Asana.app
 default < alt - 7 : open /Applications/Figma.app
 
+shift + cmd - 6 : zsh -lc 'cd /Users/joshkennedy/projects/capi-capture && nohup npm run capi -- --immediate-record >> /tmp/capi-skhd.log 2>&1 &'
+shift + cmd - 7 : zsh -lc 'cd /Users/joshkennedy/projects/capi-capture && nohup npm run capi >> /tmp/capi-skhd.log 2>&1 &'
+shift + cmd - 8 : zsh -lc 'cd /Users/joshkennedy/projects/capi-capture && nohup npm run capi -- --grid >> /tmp/capi-skhd.log 2>&1 &'
+
 ctrl - 1 : yabai -m space --focus 1 
-ctrl -2 : yabai -m space --focus 2
+ctrl - 2 : yabai -m space --focus 2
 ctrl - 3 : yabai -m space --focus 3
 ctrl - 4 : yabai -m space --focus 4
 ctrl - 5 : yabai -m space --focus 5
 
 alt - 0 : yabai -m space --layout \
-$( [[ $( yabai -m query --spaces | jq '.[] | select(.["has-focus"]==true) | .type | test("bsp")') == "true"  ]] && echo "stack" || echo "bsp" )
+$( [[ $( yabai -m query --spaces | jq '.[] | select(."has-focus"==true) | .type | test("bsp")') == "true"  ]] && echo "stack" || echo "bsp" )
 
 alt - tab : yabai -m display --focus recent
 
 ctrl + cmd - left : yabai -m space --rotate 90
 
 # sends window to the right DISPLAY and then focuses it
-shift + ctrl + cmd - right : yabai -m window --display east \
-yabai -m window --focus 
+shift + ctrl + cmd - right : yabai -m window --display east && yabai -m window --focus
 
 # sends window to the left DISPLAY and then focuses it
-shift + ctrl + cmd - left : yabai -m window --display west \
-yabai -m window --focus
+shift + ctrl + cmd - left : yabai -m window --display west && yabai -m window --focus
 
 
 # sends window to # space 
-ctrl + cmd + alt - 1 : yabai -m window --space 1 \
-yabai -m window --focus
-
-ctrl + cmd + alt - 2 : yabai -m window --space 2 \
-yabai -m window --focus
-
-ctrl + cmd + alt - 3 : yabai -m window --space 3 \
-yabai -m window --focus
-
-ctrl + cmd + alt - 4 : yabai -m window --space 4 \
-yabai -m window --focus
-
-ctrl + cmd + alt - 5 : yabai -m window --space 5 \
-yabai -m window --focus
+ctrl + cmd + alt - 1 : yabai -m window --space 1 && yabai -m window --focus
+ctrl + cmd + alt - 2 : yabai -m window --space 2 && yabai -m window --focus
+ctrl + cmd + alt - 3 : yabai -m window --space 3 && yabai -m window --focus
+ctrl + cmd + alt - 4 : yabai -m window --space 4 && yabai -m window --focus
+ctrl + cmd + alt - 5 : yabai -m window --space 5 && yabai -m window --focus
 
 xspace < cmd - n : yabai -m space --create
 xspace < cmd - d : yabai -m space --destroy
@@ -65,5 +58,4 @@ alt - j : yabai -m window --focus south
 alt - k : yabai -m window --focus north
 alt - l : yabai -m window --focus east
 
-
-
+# cmd - 0x2F : bun run /Users/joshkennedy/projects/say-cmd/prototype/index.ts

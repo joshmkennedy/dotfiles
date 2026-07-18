@@ -1,0 +1,5 @@
+{
+	"logfile": "/Users/joshkennedy/.config/shforget/shforget.log",
+	"storageDir": "/Users/joshkennedy/.config/shforget/storage",
+	"matchPathPrefix": ["/Users/joshkennedy/projects/", "/Users/joshkennedy/work/"]
+}

@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# Build and register the macOS file handler used by Ghostty path clicks.
+
+set -euo pipefail
+
+repository_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+source_root="$repository_root/apps/nvim-link"
+app_path="${NVIM_LINK_APP_DESTINATION:-$HOME/Applications/Nvim Link.app}"
+bundle_identifier=com.joshkennedy.nvim-link
+launch_services_register=/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister
+
+mkdir -p "$app_path/Contents/MacOS"
+install -m 644 "$source_root/Info.plist" "$app_path/Contents/Info.plist"
+swiftc "$source_root/Sources/main.swift" -framework AppKit -o "$app_path/Contents/MacOS/NvimLink"
+plutil -lint "$app_path/Contents/Info.plist"
+"$launch_services_register" -f "$app_path"
+
+if ! command -v duti >/dev/null 2>&1; then
+  printf '%s\n' "Nvim Link was built and registered at $app_path."
+  printf '%s\n' 'Install duti (brew install duti), then re-run this script to make it the default for developer text files.'
+  exit 0
+fi
+
+for content_type in \
+  public.source-code \
+  public.script \
+  public.json \
+  public.xml \
+  public.yaml \
+  net.daringfireball.markdown \
+  com.netscape.javascript-source \
+  public.python-script \
+  public.mpeg-2-transport-stream \
+  com.microsoft.typescript \
+  com.joshkennedy.nvim-link.typescript-react \
+  com.joshkennedy.nvim-link.developer-config; do
+  duti -s "$bundle_identifier" "$content_type" all
+done
+
+printf '%s\n' "Nvim Link is registered as the default editor for developer text files."

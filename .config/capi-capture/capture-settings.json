@@ -1,0 +1,6 @@
+{
+  "target": "display",
+  "displayId": 1,
+  "microphone": true,
+  "showClicks": true
+}

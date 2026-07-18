@@ -1,0 +1,5 @@
+.env
+.DS_Store
+.encrc
+.env.local
+.agent-presents-code

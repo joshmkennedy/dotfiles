@@ -1,0 +1,4 @@
+interface:
+  display_name: "Publish HTML Docs"
+  short_description: "Publish and find public agent documents"
+  default_prompt: "Use $publish-html-docs to publish this self-contained HTML report and return its public URL."

@@ -1,10 +1,10 @@
 return {
 	"stevearc/conform.nvim",
-	opt = {
+	opts = {
 		format_on_save = {
 			-- These options will be passed to conform.format()
 			timeout_ms = 500,
-			lsp_format = "fallback",
+			lsp_format = "never",
 		},
 		formatters_by_ft = {
 			blade = { "blade-formatter" },
@@ -12,16 +12,36 @@ return {
 			ocaml = { "ocamlformat" },
 			-- sql
 			sql = { "sleek" },
-			-- typescript
 			javascript = { "prettierd", "prettier", stop_after_first = true },
-			typescript = {
-				"prettierd",
-				"prettier",
-				stop_after_first = true,
-				 args = { "--stdin-from-filename", "$FILENAME", "--config", "${workspaceFolder}/.prettierrc" }
-			},
+			javascriptreact = { "prettierd", "prettier", stop_after_first = true },
+			typescript = { "prettierd", "prettier", stop_after_first = true },
+			typescriptreact = { "prettierd", "prettier", stop_after_first = true },
 		},
 		formatters = {
+			prettier = {
+				require_cwd = true,
+				cwd = function(_, ctx)
+					return vim.fs.root(ctx.filename, {
+						".prettierrc",
+						".prettierrc.json",
+						".prettierrc.js",
+						"prettier.config.js",
+						"package.json",
+					})
+				end,
+			},
+			prettierd = {
+				require_cwd = true,
+				cwd = function(_, ctx)
+					return vim.fs.root(ctx.filename, {
+						".prettierrc",
+						".prettierrc.json",
+						".prettierrc.js",
+						"prettier.config.js",
+						"package.json",
+					})
+				end,
+			},
 			ocamlformat = {
 				prepend_args = {
 					"--if-then-else",
@@ -36,10 +56,11 @@ return {
 
 		},
 	},
-	config = function()
+	config = function(_, opts)
+		require("conform").setup(opts)
+
 		vim.api.nvim_create_user_command('Fd', function()
-			-- vim.lsp.buf.format()
-			require("conform").format({ async = true, lsp_format = "fallback" })
+			require("conform").format({ async = true, lsp_format = "never" })
 		end, {})
 	end
 }

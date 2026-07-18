@@ -6,7 +6,7 @@ return {
 		"nvim-lua/plenary.nvim",
 	},
 	config = function()
-		print("Loading typescript-tools")
+		vim.env.MASON = vim.env.MASON or (vim.fn.stdpath("data") .. "/mason")
 		require("typescript-tools").setup({
 			on_attach = require("lsp.attach"),
 			settings = {

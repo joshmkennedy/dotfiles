@@ -12,6 +12,6 @@ return {
 			-- Refer to the configuration section below
 
 		}
-		vim.cmd [[colorscheme rose-pine]]
+		-- vim.cmd [[colorscheme rose-pine]]
 	end,
 }

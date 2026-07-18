@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create HTML Plan"
+  short_description: "Create polished, publishable HTML plans"
+  default_prompt: "Use $create-html-plan to turn this work into a polished HTML plan and publish it."

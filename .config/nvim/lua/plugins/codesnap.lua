@@ -1,1 +1,1 @@
-return { "mistricky/codesnap.nvim" }
+return { "mistricky/codesnap.nvim" , enabled = false }

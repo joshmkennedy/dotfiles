@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+# PROTOTYPE: Answer whether a Finder-opened developer file can recover from
+# having no attached tmux client by launching Ghostty into an editor session.
+
+set -euo pipefail
+
+# Ghostty's macOS login wrapper starts with a minimal PATH. Make the Homebrew
+# toolchain available to tmux and to the Neovim process it starts.
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+
+if [[ $# -ne 1 ]]; then
+  printf 'usage: %s <base64-encoded-absolute-path>\n' "$0" >&2
+  exit 64
+fi
+
+input_path=$(printf %s "$1" | base64 -D)
+session_name=${TMUX_NVIM_BOOTSTRAP_SESSION:-nvim-link}
+
+tmux_binary=${TMUX_NVIM_TMUX_BINARY:-/opt/homebrew/bin/tmux}
+nvim_binary=${NVIM_LINK_NVIM_BINARY:-/opt/homebrew/bin/nvim}
+
+if [[ ! -x "$tmux_binary" || ! -x "$nvim_binary" ]]; then
+  printf 'tmux-nvim-bootstrap: Homebrew tmux or nvim is unavailable.\n' >&2
+  exit 69
+fi
+
+tmux_command=("$tmux_binary")
+if [[ -n ${TMUX_NVIM_TMUX_SOCKET:-} ]]; then
+  tmux_command+=(-L "$TMUX_NVIM_TMUX_SOCKET")
+fi
+
+tmux_run() {
+  "${tmux_command[@]}" "$@"
+}
+
+if ! tmux_run has-session -t "$session_name" 2>/dev/null; then
+  tmux_run new-session -d -s "$session_name" -n nvim "$nvim_binary"
+fi
+
+# Explicitly select this session so tmux-nvim-open does not try to discover a
+# client before the Ghostty terminal has attached to it.
+TMUX_NVIM_SESSION="$session_name" \
+TMUX_NVIM_TMUX_SOCKET="${TMUX_NVIM_TMUX_SOCKET:-}" \
+"$HOME/.bin/tmux-nvim-open" "$input_path"
+
+# Allows the state transition to be verified in an isolated tmux server.
+if [[ ${TMUX_NVIM_BOOTSTRAP_NO_ATTACH:-} == 1 ]]; then
+  exit 0
+fi
+
+exec "${tmux_command[@]}" attach-session -t "$session_name"

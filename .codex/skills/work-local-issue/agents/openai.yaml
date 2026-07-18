@@ -1,0 +1,4 @@
+interface:
+  display_name: "Work Local Issue"
+  short_description: "Find and work the next open local Markdown issue."
+  default_prompt: "Work the next open local issue in this repository."
